@@ -18,20 +18,7 @@
   },
   "editor.formatOnSave": true,
   "editor.defaultFormatter": "esbenp.prettier-vscode",
-  "eslint.validate": [
-    "javascript",
-    "javascriptreact",
-    "typescript",
-    "typescriptreact",
-    "vue"
-  ],
+  "eslint.validate": ["javascript", "javascriptreact", "typescript", "typescriptreact", "vue"],
   "cSpell.language": "en,pt,pt_BR",
-  "cSpell.words": [
-    "composables",
-    "heroicons",
-    "pinia",
-    "supabase",
-    "Supabase",
-    "vuetify"
-  ]
+  "cSpell.words": ["composables", "heroicons", "pinia", "supabase", "Supabase", "vuetify"]
 }
