@@ -1,7 +1,10 @@
-
 <template>
-    <div>
-        <NavBar />
+  <v-app>
+    <NavBar />
+    <v-main>
+      <v-container>
         <slot />
-    </div>
+      </v-container>
+    </v-main>
+  </v-app>
 </template>

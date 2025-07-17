@@ -1,14 +1,10 @@
-
 <script lang="ts" setup>
-interface Props {
+  interface Props {
     title?: string
-}
-const {title = 'Título'} = defineProps<Props>()
-
+  }
+  const { title = 'Título' } = defineProps<Props>()
 </script>
 
-
-
 <template>
-    <h1 class="text-h4 font-weight-bold">{{ title }}</h1>
+  <h1 class="text-h4 font-weight-bold">{{ title }}</h1>
 </template>
