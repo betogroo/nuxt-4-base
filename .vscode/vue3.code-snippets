@@ -1,0 +1,15 @@
+{
+  // VUE BASE
+  "Vue 3 Script Setup Complete": {
+    "scope": "vue, html",
+    "prefix": "v3-sfc-complete",
+    "body": [
+      "<script setup lang=\"ts\">$1",
+      "</script>",
+      "",
+      "<template>",
+      "\t<div></div>",
+      "</template>",
+    ],
+  },
+}
