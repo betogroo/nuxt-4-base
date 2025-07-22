@@ -11,6 +11,7 @@
     "mhutchie.git-graph",
     "pkief.material-icon-theme",
     "formulahendry.auto-rename-tag",
-    "lukas-tr.materialdesignicons-intellisense"
+    "lukas-tr.materialdesignicons-intellisense",
+    "vitest.explorer"
   ]
 }
