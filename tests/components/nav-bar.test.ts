@@ -12,16 +12,19 @@ describe('nav-bar', () => {
     const nav = wrapper.find('nav')
     expect(nav.exists()).toBe(true)
   })
-  it('possui dois links com os destinos corretos', async () => {
+  it('possui três links com os destinos corretos', async () => {
     const wrapper = await mountSuspended(NavBar)
 
     const links = wrapper.findAll('a')
-    expect(links.length).toBe(2)
+    expect(links.length).toBe(3)
 
     expect(links[0].attributes('href')).toBe('/')
     expect(links[0].text()).toBe('Home')
 
-    expect(links[1].attributes('href')).toBe('/about')
-    expect(links[1].text()).toBe('About')
+    expect(links[1].attributes('href')).toBe('/counter')
+    expect(links[1].text()).toBe('Counter')
+
+    expect(links[2].attributes('href')).toBe('/about')
+    expect(links[2].text()).toBe('About')
   })
 })
