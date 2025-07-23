@@ -24,7 +24,7 @@ describe('CounterButtons', () => {
     expect(minus.text()).toBe('-')
   })
 
-  it('botão "+" is present and visible', async () => {
+  it('button "+" is present and visible', async () => {
     const wrapper = await mountSuspended(CounterButtons)
     const plus = wrapper.find('button:last-child')
     expect(plus.text()).toBe('+')
