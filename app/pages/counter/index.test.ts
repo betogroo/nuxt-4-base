@@ -1,6 +1,6 @@
 import { describe, it, expect } from 'vitest'
 import { mountSuspended } from '@nuxt/test-utils/runtime'
-import CounterIndex from '../../../app/pages/counter/index.vue'
+import CounterIndex from '~/pages/counter/index.vue'
 
 describe('CounterIndex', () => {
   it('render CounterDisplay component with displayNumber = 0', async () => {

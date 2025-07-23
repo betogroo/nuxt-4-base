@@ -1,6 +1,6 @@
 import { mountSuspended } from '@nuxt/test-utils/runtime'
 import { it, expect, describe } from 'vitest'
-import NavBar from '../../app/components/nav-bar.vue'
+import { NavBar } from '#components'
 
 describe('nav-bar', () => {
   it('component exists', async () => {

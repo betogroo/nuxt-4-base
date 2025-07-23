@@ -1,6 +1,6 @@
 import { describe, it, expect } from 'vitest'
 import { mountSuspended } from '@nuxt/test-utils/runtime'
-import CounterButtons from '../../../app/components/counter/buttons.vue'
+import { CounterButtons } from '#components'
 
 describe('CounterButtons', () => {
   it('generate expect html', async () => {

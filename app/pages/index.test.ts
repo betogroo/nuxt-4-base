@@ -1,6 +1,6 @@
 import { describe, it, expect } from 'vitest'
 import { mountSuspended } from '@nuxt/test-utils/runtime'
-import HomePage from '../../app/pages/index.vue'
+import HomePage from '~/pages/index.vue'
 
 describe('Home Page', () => {
   it('must render Page with prop title', async () => {
