@@ -1,4 +1,6 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+  defineOptions({ name: 'CounterButtons' })
+</script>
 
 <template>
   <div class="d-flex ga-3">
