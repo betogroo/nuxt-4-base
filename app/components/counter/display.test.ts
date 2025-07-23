@@ -3,8 +3,16 @@ import { mountSuspended } from '@nuxt/test-utils/runtime'
 import { CounterDisplay } from '#components'
 
 describe('CounterDisplay', () => {
-  it('must show number 20', async () => {
-    const wrapper = await mountSuspended(CounterDisplay)
-    expect(wrapper.text()).toContain('10')
+  it('must show number 0', async () => {
+    const wrapper = await mountSuspended(CounterDisplay, {
+      props: { displayNumber: 0 },
+    })
+    expect(wrapper.text()).toContain('0')
+  })
+  it('must show prop number', async () => {
+    const wrapper = await mountSuspended(CounterDisplay, {
+      props: { displayNumber: 42 },
+    })
+    expect(wrapper.text()).toContain('42')
   })
 })

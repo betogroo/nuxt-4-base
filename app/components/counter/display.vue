@@ -7,5 +7,5 @@
 </script>
 
 <template>
-  <div class="text-h1 font-weight-bold">10</div>
+  <div class="text-h1 font-weight-bold">{{ displayNumber }}</div>
 </template>
