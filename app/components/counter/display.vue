@@ -1,5 +1,9 @@
 <script setup lang="ts">
   defineOptions({ name: 'CounterDisplay' })
+  defineProps<Props>()
+  interface Props {
+    displayNumber: number
+  }
 </script>
 
 <template>
