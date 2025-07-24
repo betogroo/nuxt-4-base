@@ -3,7 +3,10 @@ const useCounter = () => {
 
   const incrementValue = () => displayNumber.value++
   const decrementValue = () => displayNumber.value--
-  return { displayNumber, incrementValue, decrementValue }
+  const resetValue = () => {
+    displayNumber.value = 0
+  }
+  return { displayNumber, incrementValue, decrementValue, resetValue }
 }
 
 export default useCounter
