@@ -3,7 +3,9 @@ import useCounter from '~/composables/useCounter'
 
 describe('useCounter', () => {
   it('return 0 as default value', () => {
-    const { displayNumber } = useCounter()
+    const { displayNumber, incrementValue } = useCounter()
     expect(displayNumber.value).toBe(0)
+    incrementValue()
+    expect(displayNumber.value).toBe(1)
   })
 })
