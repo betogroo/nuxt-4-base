@@ -12,10 +12,10 @@ describe('CounterButtons', () => {
     expect(wrapper.exists()).toBe(true)
   })
 
-  it('have two buttons', async () => {
+  it('render three buttons', async () => {
     const wrapper = await mountSuspended(CounterButtons)
     const buttons = wrapper.findAll('button')
-    expect(buttons.length).toBe(2)
+    expect(buttons.length).toBe(3)
   })
 
   it('button "-" is present and visible', async () => {
