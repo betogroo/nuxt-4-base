@@ -3,10 +3,10 @@ import { mountSuspended } from '@nuxt/test-utils/runtime'
 import { CounterButtons } from '#components'
 
 describe('CounterButtons', () => {
-  it('generate expect html', async () => {
+  /* it('generate expect html', async () => {
     const wrapper = await mountSuspended(CounterButtons)
     console.log(wrapper.html()) // Apenas para inspeção
-  })
+  }) */
   it('render the component', async () => {
     const wrapper = await mountSuspended(CounterButtons)
     expect(wrapper.exists()).toBe(true)
@@ -28,5 +28,21 @@ describe('CounterButtons', () => {
     const wrapper = await mountSuspended(CounterButtons)
     const plus = wrapper.find('button:last-child')
     expect(plus.text()).toBe('+')
+  })
+
+  it('increment vale on click on + button', async () => {
+    const displayNumber = ref<number>(0)
+    const wrapper = await mountSuspended(CounterButtons, {
+      props: {
+        displayNumber: displayNumber.value,
+        onIncrement: () => {
+          displayNumber.value++
+        },
+      },
+    })
+    const plusButton = wrapper.find('button:last-child')
+    await plusButton.trigger('click')
+    await nextTick()
+    expect(displayNumber.value).toBe(1)
   })
 })
