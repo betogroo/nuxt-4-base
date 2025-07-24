@@ -14,4 +14,11 @@ describe('useCounter', () => {
     decrementValue()
     expect(displayNumber.value).toBe(-1)
   })
+  it('resets displayNumber to 0 when resetValue is called', () => {
+    const { displayNumber, resetValue } = useCounter()
+    displayNumber.value = 10
+    resetValue()
+    displayNumber.value = 0
+    expect(displayNumber.value).toBe(0)
+  })
 })
