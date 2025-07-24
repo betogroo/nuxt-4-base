@@ -1,6 +1,8 @@
 const useCounter = () => {
   const displayNumber = ref<number>(0)
-  return { displayNumber }
+
+  const incrementValue = () => displayNumber.value++
+  return { displayNumber, incrementValue }
 }
 
 export default useCounter
