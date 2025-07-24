@@ -19,11 +19,23 @@ describe('CounterIndex', () => {
   it('increment number on click on button +', async () => {
     const wrapper = await mountSuspended(CounterIndex)
     const counterDisplay = wrapper.findComponent({ name: 'CounterDisplay' })
-    expect(counterDisplay.props('displayNumber')).toBe(0)
     const incrementButton = wrapper.find('button:last-child')
+
+    expect(counterDisplay.props('displayNumber')).toBe(0)
     await incrementButton.trigger('click')
 
     expect(counterDisplay.props('displayNumber')).toBe(1)
     expect(wrapper.text()).toContain('1')
+  })
+  it('decrement number on click on button -', async () => {
+    const wrapper = await mountSuspended(CounterIndex)
+    const counterDisplay = wrapper.findComponent({ name: 'CounterDisplay' })
+    const decrementButton = wrapper.find('button:first-child')
+
+    expect(counterDisplay.props('displayNumber')).toBe(0)
+    await decrementButton.trigger('click')
+
+    expect(counterDisplay.props('displayNumber')).toBe(-1)
+    expect(wrapper.text()).toContain('-1')
   })
 })
