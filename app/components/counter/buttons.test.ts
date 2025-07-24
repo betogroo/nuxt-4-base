@@ -20,19 +20,19 @@ describe('CounterButtons', () => {
 
   it('button "-" is present and visible', async () => {
     const wrapper = await mountSuspended(CounterButtons)
-    const minus = wrapper.find('button:first-child')
+    const minus = wrapper.get('[data-testid="decrement"]')
     expect(minus.text()).toBe('-')
   })
 
   it('button "+" is present and visible', async () => {
     const wrapper = await mountSuspended(CounterButtons)
-    const plus = wrapper.find('button:last-child')
+    const plus = wrapper.get('[data-testid="increment"]')
     expect(plus.text()).toBe('+')
   })
 
   it('emit "increment" event on click on +', async () => {
     const wrapper = await mountSuspended(CounterButtons)
-    const incrementButton = wrapper.find('button:last-child')
+    const incrementButton = wrapper.find('[data-testid="increment"]')
     await incrementButton.trigger('click')
 
     expect(wrapper.emitted('increment')).toBeTruthy()
@@ -40,10 +40,23 @@ describe('CounterButtons', () => {
   })
   it('emit "increment" event on click on -', async () => {
     const wrapper = await mountSuspended(CounterButtons)
-    const incrementButton = wrapper.find('button:first-child')
+    const incrementButton = wrapper.find('[data-testid="decrement"]')
     await incrementButton.trigger('click')
 
     expect(wrapper.emitted('decrement')).toBeTruthy()
     expect(wrapper.emitted('decrement')?.length).toBe(1)
+  })
+  it('button "reset" is present and visible', async () => {
+    const wrapper = await mountSuspended(CounterButtons)
+    const resetButton = wrapper.get('[data-testid="reset"]')
+    expect(resetButton.text()).toBe('Reiniciar')
+  })
+  it('emit "reset" event on click on reset', async () => {
+    const wrapper = await mountSuspended(CounterButtons)
+    const resetButton = wrapper.get('[data-testid="reset"]')
+    await resetButton.trigger('click')
+
+    expect(wrapper.emitted('resetValue')).toBeTruthy()
+    expect(wrapper.emitted('resetValue')?.length).toBe(1)
   })
 })
