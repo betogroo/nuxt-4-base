@@ -30,19 +30,12 @@ describe('CounterButtons', () => {
     expect(plus.text()).toBe('+')
   })
 
-  it('increment vale on click on + button', async () => {
-    const displayNumber = ref<number>(0)
-    const wrapper = await mountSuspended(CounterButtons, {
-      props: {
-        displayNumber: displayNumber.value,
-        onIncrement: () => {
-          displayNumber.value++
-        },
-      },
-    })
-    const plusButton = wrapper.find('button:last-child')
-    await plusButton.trigger('click')
-    await nextTick()
-    expect(displayNumber.value).toBe(1)
+  it('emit "increment" event on click on +', async () => {
+    const wrapper = await mountSuspended(CounterButtons)
+    const incrementButton = wrapper.find('button:last-child')
+    await incrementButton.trigger('click')
+
+    expect(wrapper.emitted('increment')).toBeTruthy()
+    expect(wrapper.emitted('increment')?.length).toBe(1)
   })
 })
