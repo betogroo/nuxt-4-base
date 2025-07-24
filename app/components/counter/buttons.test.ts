@@ -38,4 +38,12 @@ describe('CounterButtons', () => {
     expect(wrapper.emitted('increment')).toBeTruthy()
     expect(wrapper.emitted('increment')?.length).toBe(1)
   })
+  it('emit "increment" event on click on -', async () => {
+    const wrapper = await mountSuspended(CounterButtons)
+    const incrementButton = wrapper.find('button:first-child')
+    await incrementButton.trigger('click')
+
+    expect(wrapper.emitted('decrement')).toBeTruthy()
+    expect(wrapper.emitted('decrement')?.length).toBe(1)
+  })
 })
