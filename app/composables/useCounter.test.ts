@@ -21,4 +21,10 @@ describe('useCounter', () => {
     displayNumber.value = 0
     expect(displayNumber.value).toBe(0)
   })
+  it('does not decrement if displayNumber is 0', () => {
+    const { displayNumber, decrementValue } = useCounter()
+    displayNumber.value = 0
+    decrementValue()
+    expect(displayNumber.value).toBe(0)
+  })
 })
