@@ -19,7 +19,7 @@ describe('CounterIndex', () => {
   it('increment number on click on button +', async () => {
     const wrapper = await mountSuspended(CounterIndex)
     const counterDisplay = wrapper.findComponent({ name: 'CounterDisplay' })
-    const incrementButton = wrapper.find('button:last-child')
+    const incrementButton = wrapper.find('[data-testid="increment"]')
 
     expect(counterDisplay.props('displayNumber')).toBe(0)
     await incrementButton.trigger('click')
@@ -30,12 +30,23 @@ describe('CounterIndex', () => {
   it('decrement number on click on button -', async () => {
     const wrapper = await mountSuspended(CounterIndex)
     const counterDisplay = wrapper.findComponent({ name: 'CounterDisplay' })
-    const decrementButton = wrapper.find('button:first-child')
+    const decrementButton = wrapper.find('[data-testid="decrement"]')
 
     expect(counterDisplay.props('displayNumber')).toBe(0)
     await decrementButton.trigger('click')
 
     expect(counterDisplay.props('displayNumber')).toBe(-1)
     expect(wrapper.text()).toContain('-1')
+  })
+  it('resets number on click on button reset', async () => {
+    const wrapper = await mountSuspended(CounterIndex)
+    const counterDisplay = wrapper.findComponent({ name: 'CounterDisplay' })
+    const incrementButton = wrapper.find('[data-testid="decrement"]')
+    const resetButton = wrapper.find('[data-testid="reset"]')
+    expect(counterDisplay.props('displayNumber')).toBe(0)
+    await incrementButton.trigger('click')
+    expect(wrapper.text()).toContain('1')
+    await resetButton.trigger('click')
+    expect(wrapper.text()).toContain('0')
   })
 })
