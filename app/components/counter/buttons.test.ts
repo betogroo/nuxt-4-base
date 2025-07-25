@@ -11,7 +11,6 @@ describe('CounterButtons', () => {
     const wrapper = await mountSuspended(CounterButtons)
     expect(wrapper.exists()).toBe(true)
   })
-
   it('render three buttons', async () => {
     const wrapper = await mountSuspended(CounterButtons)
     const buttons = wrapper.findAll('button')
@@ -58,5 +57,12 @@ describe('CounterButtons', () => {
 
     expect(wrapper.emitted('resetValue')).toBeTruthy()
     expect(wrapper.emitted('resetValue')?.length).toBe(1)
+  })
+  it('disables decrement button when "decrement" is in disabled prop', async () => {
+    const wrapper = await mountSuspended(CounterButtons, {
+      props: { disabled: ['decrement'] },
+    })
+    const decrementButton = wrapper.get('[data-testid="decrement"]')
+    expect(decrementButton.attributes('disabled')).toBeDefined()
   })
 })
