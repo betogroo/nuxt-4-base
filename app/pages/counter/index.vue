@@ -2,7 +2,7 @@
   definePageMeta({
     name: 'CounterIndex',
   })
-  const { displayNumber, incrementValue, decrementValue } = useCounter()
+  const { displayNumber, incrementValue, decrementValue, resetValue } = useCounter()
 </script>
 
 <template>
@@ -10,7 +10,11 @@
     <v-card class="text-center pa-4" width="400">
       <div class="d-flex flex-column justify-center align-center">
         <counter-display :display-number="displayNumber" />
-        <counter-buttons @decrement="decrementValue" @increment="incrementValue" />
+        <counter-buttons
+          @decrement="decrementValue"
+          @increment="incrementValue"
+          @reset-value="resetValue"
+        />
       </div>
     </v-card>
   </v-container>
