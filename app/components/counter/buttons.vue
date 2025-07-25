@@ -1,5 +1,10 @@
 <script setup lang="ts">
+  interface Props {
+    disabled?: string[]
+  }
   defineOptions({ name: 'CounterButtons' })
+
+  const { disabled = [''] } = defineProps<Props>()
   const $emit = defineEmits<{
     increment: []
     decrement: []
@@ -10,7 +15,12 @@
 <template>
   <div>
     <div class="d-flex ga-3">
-      <v-btn color="red" data-testid="decrement" variant="outlined" @click="$emit('decrement')"
+      <v-btn
+        color="red"
+        data-testid="decrement"
+        :disabled="disabled?.includes('decrement')"
+        variant="outlined"
+        @click="$emit('decrement')"
         >-</v-btn
       >
       <v-btn color="blue" data-testid="increment" variant="outlined" @click="$emit('increment')"
