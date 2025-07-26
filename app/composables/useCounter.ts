@@ -9,7 +9,8 @@ const useCounter = () => {
   const resetValue = () => {
     displayNumber.value = 0
   }
-  return { displayNumber, incrementValue, decrementValue, resetValue }
+  const disabled = computed(() => (displayNumber.value === 0 ? ['decrement', 'reset'] : []))
+  return { displayNumber, incrementValue, decrementValue, resetValue, disabled }
 }
 
 export default useCounter
