@@ -1,26 +1,23 @@
 <script setup lang="ts">
   interface Props {
-    disabled?: string[]
+    isDisabled?: string[]
   }
   defineOptions({ name: 'CounterButtons' })
 
-  const { disabled = [''] } = defineProps<Props>()
+  const { isDisabled = [''] } = defineProps<Props>()
   const $emit = defineEmits<{
     increment: []
     decrement: []
     'reset-value': []
   }>()
-
-  const isDisabled = (name: string) => disabled.includes(name)
 </script>
-
 <template>
   <div>
     <div class="d-flex ga-3">
       <v-btn
         color="red"
         data-testid="decrement"
-        :disabled="isDisabled('decrement')"
+        :disabled="isDisabled.includes('decrement')"
         variant="outlined"
         @click="$emit('decrement')"
         >-</v-btn
@@ -30,7 +27,7 @@
       >
     </div>
     <div>
-      <v-btn color="error" data-testid="reset" @click="$emit('resetValue')">Reiniciar</v-btn>
+      <v-btn color="error" data-testid="reset" @click="$emit('reset-value')">Reiniciar</v-btn>
     </div>
   </div>
 </template>
