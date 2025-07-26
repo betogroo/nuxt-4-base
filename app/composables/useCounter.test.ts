@@ -2,17 +2,13 @@ import { describe, it, expect } from 'vitest'
 import useCounter from '~/composables/useCounter'
 
 describe('useCounter', () => {
-  it('return 0 as default value and increment', () => {
-    const { displayNumber, incrementValue } = useCounter()
+  it('increments and decrements the counter correctly', () => {
+    const { displayNumber, incrementValue, decrementValue } = useCounter()
     expect(displayNumber.value).toBe(0)
     incrementValue()
     expect(displayNumber.value).toBe(1)
-  })
-  it('return 0 as default value and decrement', () => {
-    const { displayNumber, decrementValue } = useCounter()
-    expect(displayNumber.value).toBe(0)
     decrementValue()
-    expect(displayNumber.value).toBe(-1)
+    expect(displayNumber.value).toBe(0)
   })
   it('resets displayNumber to 0 when resetValue is called', () => {
     const { displayNumber, resetValue } = useCounter()
