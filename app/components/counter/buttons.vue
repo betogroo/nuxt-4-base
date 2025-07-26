@@ -1,10 +1,10 @@
 <script setup lang="ts">
   interface Props {
-    isDisabled?: string[]
+    disabled?: string[]
   }
   defineOptions({ name: 'CounterButtons' })
 
-  const { isDisabled = [''] } = defineProps<Props>()
+  const { disabled = [] } = defineProps<Props>()
   const $emit = defineEmits<{
     increment: []
     decrement: []
@@ -17,7 +17,7 @@
       <v-btn
         color="red"
         data-testid="decrement"
-        :disabled="isDisabled.includes('decrement')"
+        :disabled="disabled.includes('decrement')"
         variant="outlined"
         @click="$emit('decrement')"
         >-</v-btn
@@ -27,7 +27,13 @@
       >
     </div>
     <div>
-      <v-btn color="error" data-testid="reset" @click="$emit('reset-value')">Reiniciar</v-btn>
+      <v-btn
+        color="error"
+        data-testid="reset"
+        :disabled="disabled.includes('reset')"
+        @click="$emit('reset-value')"
+        >Reiniciar</v-btn
+      >
     </div>
   </div>
 </template>
