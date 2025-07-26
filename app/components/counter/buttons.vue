@@ -8,8 +8,10 @@
   const $emit = defineEmits<{
     increment: []
     decrement: []
-    resetValue: []
+    'reset-value': []
   }>()
+
+  const isDisabled = (name: string) => disabled.includes(name)
 </script>
 
 <template>
@@ -18,7 +20,7 @@
       <v-btn
         color="red"
         data-testid="decrement"
-        :disabled="disabled?.includes('decrement')"
+        :disabled="isDisabled('decrement')"
         variant="outlined"
         @click="$emit('decrement')"
         >-</v-btn
