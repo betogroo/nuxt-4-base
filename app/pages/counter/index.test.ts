@@ -54,4 +54,9 @@ describe('CounterIndex', () => {
     expect(counterDisplay.props('displayNumber')).toBe(0)
     expect(wrapper.text()).toContain('0')
   })
+  it('render "Max: 10" with value', async () => {
+    const wrapper = await mountSuspended(CounterIndex)
+    const { maxValue } = useCounter()
+    expect(wrapper.text()).toContain(`Max: ${maxValue.value}`)
+  })
 })
