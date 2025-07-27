@@ -10,7 +10,7 @@
     <v-card class="text-center pa-4" width="400">
       <div class="d-flex flex-column justify-center align-center">
         <counter-display :display-number="displayNumber" />
-        <h3>Max: {{ maxValue }}</h3>
+        <h3 data-testid="maxDisplay">Max: {{ maxValue }}</h3>
         <counter-buttons
           @decrement="decrementValue"
           @increment="incrementValue"
