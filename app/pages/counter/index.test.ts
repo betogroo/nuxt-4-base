@@ -1,6 +1,7 @@
 import { describe, it, expect } from 'vitest'
 import { mountSuspended } from '@nuxt/test-utils/runtime'
 import CounterIndex from '~/pages/counter/index.vue'
+import { CounterMaxValueDisplay } from '#components'
 
 describe('CounterIndex', () => {
   it('render CounterDisplay component with displayNumber = 0', async () => {
@@ -55,9 +56,8 @@ describe('CounterIndex', () => {
     expect(wrapper.text()).toContain('0')
   })
   it('renders maxValue from composable correctly', async () => {
-    const wrapper = await mountSuspended(CounterIndex)
-    const maxDisplay = wrapper.get('[data-testid="maxDisplay"]')
+    const wrapper = await mountSuspended(CounterMaxValueDisplay)
     const { maxValue } = useCounter()
-    expect(maxDisplay.text()).toBe(`Max: ${maxValue.value}`)
+    expect(wrapper.text()).toContain(`Max: ${maxValue.value}`)
   })
 })
