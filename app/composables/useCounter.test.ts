@@ -35,4 +35,8 @@ describe('useCounter', () => {
     expect(disabled.value).toContain('decrement')
     expect(disabled.value).toContain('reset')
   })
+  it('maxValue with 10 as default value', () => {
+    const { maxValue } = useCounter()
+    expect(maxValue.value).toBe(10)
+  })
 })
