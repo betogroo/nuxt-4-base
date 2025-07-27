@@ -2,7 +2,8 @@
   definePageMeta({
     name: 'CounterIndex',
   })
-  const { displayNumber, incrementValue, decrementValue, resetValue, maxValue } = useCounter()
+  const { displayNumber, incrementValue, decrementValue, resetValue, maxValue, disabled } =
+    useCounter()
 </script>
 
 <template>
@@ -12,6 +13,7 @@
         <counter-display :display-number="displayNumber" />
         <h3 data-testid="maxDisplay">Max: {{ maxValue }}</h3>
         <counter-buttons
+          :disabled
           @decrement="decrementValue"
           @increment="incrementValue"
           @reset-value="resetValue"
