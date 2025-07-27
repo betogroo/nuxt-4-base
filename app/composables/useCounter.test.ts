@@ -39,4 +39,16 @@ describe('useCounter', () => {
     const { maxValue } = useCounter()
     expect(maxValue.value).toBe(10)
   })
+  it('does not increment if displayNumber is equal to maxValue', () => {
+    const { displayNumber, incrementValue } = useCounter()
+    displayNumber.value = 10
+    incrementValue()
+    expect(displayNumber.value).toBe(10)
+  })
+  it('disabled receive "increment" on displayNumber is equal masValue', () => {
+    const { displayNumber, disabled } = useCounter()
+    displayNumber.value = 10
+    expect(disabled.value.length).toBe(1)
+    expect(disabled.value).toContain('increment')
+  })
 })
