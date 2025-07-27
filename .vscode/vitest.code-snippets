@@ -1,0 +1,7 @@
+{
+  "Async It": {
+    "scope": "typescript",
+    "prefix": "vitest-it-async",
+    "body": ["it('$1', async () => {", "\t", "})"],
+  },
+}
