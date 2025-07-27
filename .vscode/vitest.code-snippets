@@ -1,4 +1,9 @@
 {
+  "New Vitest Scaffold": {
+    "scope": "typescript",
+    "prefix": "vitest-new",
+    "body": ["import { describe, it, expect } from 'vitest'\n", "describe('$1', () => {$2}"],
+  },
   "Async It": {
     "scope": "typescript",
     "prefix": "vitest-it-async",
