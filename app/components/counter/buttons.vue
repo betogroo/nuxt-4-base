@@ -22,7 +22,12 @@
         @click="$emit('decrement')"
         >-</v-btn
       >
-      <v-btn color="blue" data-testid="increment" variant="outlined" @click="$emit('increment')"
+      <v-btn
+        color="blue"
+        data-testid="increment"
+        :disabled="disabled.includes('increment')"
+        variant="outlined"
+        @click="$emit('increment')"
         >+</v-btn
       >
     </div>
