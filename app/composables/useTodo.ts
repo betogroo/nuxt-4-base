@@ -6,7 +6,11 @@ const useTodo = () => {
   }
   const todoList = ref<TodoItem[]>([])
 
-  return { todoList }
+  const addTodo = (todo: TodoItem) => {
+    todoList.value.push(todo)
+  }
+
+  return { todoList, addTodo }
 }
 
 export default useTodo
