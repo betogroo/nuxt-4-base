@@ -34,4 +34,9 @@ describe('nav-bar', () => {
     expect(about.attributes('href')).toBe('/about')
     expect(about.text()).toBe('About')
   })
+  it('link todo exists', async () => {
+    const todo = wrapper.get('[data-testid="link-todo"]')
+    expect(todo.attributes('href')).toBe('/todo')
+    expect(todo.text()).toBe('Todo')
+  })
 })
