@@ -6,8 +6,13 @@ const useTodo = () => {
   }
   const todoList = ref<TodoItem[]>([])
 
-  const addTodo = (todo: TodoItem) => {
-    todoList.value.push(todo)
+  const addTodo = (title: string) => {
+    const newTodo: TodoItem = {
+      id: crypto.randomUUID(),
+      title,
+      isDone: false,
+    }
+    todoList.value.push(newTodo)
   }
 
   return { todoList, addTodo }
