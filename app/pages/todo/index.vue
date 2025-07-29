@@ -12,5 +12,5 @@
 </script>
 
 <template>
-  <div v-for="todo in todoList" :key="todo.id" data-testid="todo-list">{{ todo.title }}</div>
+  <todo-item v-for="todo in todoList" :key="todo.id" data-testid="todo-list" :item="todo" />
 </template>
