@@ -1,9 +1,9 @@
+export interface TodoItem {
+  id: string
+  title: string
+  isDone: boolean
+}
 const useTodo = () => {
-  interface TodoItem {
-    id: string
-    title: string
-    isDone: boolean
-  }
   const todoList = ref<TodoItem[]>([])
 
   const addTodo = (title: string) => {
