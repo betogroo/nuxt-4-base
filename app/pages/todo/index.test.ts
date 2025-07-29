@@ -12,4 +12,13 @@ describe('Todo Index Page', () => {
     const todo = wrapper.get('[data-testid="todo-list"]')
     expect(todo.text()).toBe('Arrumar a Cama')
   })
+  it('add new todo', async () => {
+    const wrapper = await mountSuspended(TodoIndex)
+    expect(wrapper.findAll('[data-testid="todo-list"]')).toHaveLength(1)
+    const textfield = wrapper.get('[data-testid="title"] input')
+    const submit = wrapper.get('[data-testid="submit"]')
+    await textfield.setValue('Descongelar a Carne')
+    await submit.trigger('submit')
+    expect(wrapper.findAll('[data-testid="todo-list"]')).toHaveLength(2)
+  })
 })
