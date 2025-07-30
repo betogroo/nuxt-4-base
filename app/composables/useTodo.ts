@@ -16,7 +16,11 @@ const useTodo = () => {
     todoList.value.push(newTodo)
   }
 
-  return { todoList, addTodo }
+  const deleteTodo = (id: string) => {
+    todoList.value = todoList.value.filter((item) => item.id !== id)
+  }
+
+  return { todoList, addTodo, deleteTodo }
 }
 
 export default useTodo
