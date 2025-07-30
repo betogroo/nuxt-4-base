@@ -7,6 +7,7 @@ const useTodo = () => {
   const todoList = ref<TodoItem[]>([])
 
   const addTodo = (title: string) => {
+    if (!title.trim()) return
     const newTodo: TodoItem = {
       id: crypto.randomUUID(),
       title,
