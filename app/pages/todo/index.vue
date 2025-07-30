@@ -4,11 +4,12 @@
   })
 
   const { todoList, addTodo } = useTodo()
+  const title = ref<string>('')
 
   const handleSubmit = () => {
     addTodo(title.value)
+    title.value = ''
   }
-  const title = ref<string>('')
 </script>
 
 <template>
