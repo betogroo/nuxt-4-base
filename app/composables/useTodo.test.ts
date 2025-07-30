@@ -24,7 +24,8 @@ describe('Use Todo Composable', () => {
     expect(todoList.value.length).toBe(0)
     addTodo('Arrumar a Cama')
     expect(todoList.value.length).toBe(1)
-    deleteTodo('someId')
+    const todoId = todoList.value[0]?.id
+    if (todoId) deleteTodo(todoId)
     expect(todoList.value.length).toBe(0)
   })
 })
