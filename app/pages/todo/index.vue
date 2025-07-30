@@ -4,13 +4,6 @@
   })
 
   const { todoList, addTodo } = useTodo()
-  todoList.value = [
-    {
-      id: crypto.randomUUID(),
-      title: 'Arrumar a Cama',
-      isDone: false,
-    },
-  ]
 
   const handleSubmit = () => {
     addTodo(title.value)

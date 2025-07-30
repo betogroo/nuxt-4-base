@@ -7,11 +7,6 @@ describe('Todo Index Page', () => {
     const wrapper = await mountSuspended(TodoIndex)
     expect(wrapper.exists()).toBe(true)
   })
-  it('renders a todo list', async () => {
-    const wrapper = await mountSuspended(TodoIndex)
-    const todo = wrapper.get('[data-testid="todo-list"]')
-    expect(todo.text()).toBe('Arrumar a Cama')
-  })
   it('button must disable if no value on textfield', async () => {
     const wrapper = await mountSuspended(TodoIndex)
     const textfield = wrapper.get('[data-testid="title"] input')
@@ -20,11 +15,11 @@ describe('Todo Index Page', () => {
   })
   it('add new todo', async () => {
     const wrapper = await mountSuspended(TodoIndex)
-    expect(wrapper.findAll('[data-testid="todo-list"]')).toHaveLength(1)
+    expect(wrapper.findAll('[data-testid="todo-list"]')).toHaveLength(0)
     const textfield = wrapper.get('[data-testid="title"] input')
     const submit = wrapper.get('[data-testid="submit"]')
     await textfield.setValue('Descongelar a Carne')
     await submit.trigger('submit')
-    expect(wrapper.findAll('[data-testid="todo-list"]')).toHaveLength(2)
+    expect(wrapper.findAll('[data-testid="todo-list"]')).toHaveLength(1)
   })
 })
