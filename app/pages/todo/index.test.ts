@@ -13,7 +13,7 @@ describe('Todo Index Page', () => {
     await textfield.setValue('')
     expect(wrapper.get('[data-testid="submit"]').attributes('disabled')).toBeDefined()
   })
-  it('add new todo', async () => {
+  it('add new todo and clear input text', async () => {
     const wrapper = await mountSuspended(TodoIndex)
     expect(wrapper.findAll('[data-testid="todo-list"]')).toHaveLength(0)
     const textfield = wrapper.get('[data-testid="title"] input')
@@ -21,5 +21,6 @@ describe('Todo Index Page', () => {
     await textfield.setValue('Descongelar a Carne')
     await submit.trigger('submit')
     expect(wrapper.findAll('[data-testid="todo-list"]')).toHaveLength(1)
+    expect((textfield.element as HTMLInputElement).value).toBe('')
   })
 })
