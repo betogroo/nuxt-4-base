@@ -12,6 +12,12 @@ describe('Todo Index Page', () => {
     const todo = wrapper.get('[data-testid="todo-list"]')
     expect(todo.text()).toBe('Arrumar a Cama')
   })
+  it('button must disable if no value on textfield', async () => {
+    const wrapper = await mountSuspended(TodoIndex)
+    const textfield = wrapper.get('[data-testid="title"] input')
+    await textfield.setValue('')
+    expect(wrapper.get('[data-testid="submit"]').attributes('disabled')).toBeDefined()
+  })
   it('add new todo', async () => {
     const wrapper = await mountSuspended(TodoIndex)
     expect(wrapper.findAll('[data-testid="todo-list"]')).toHaveLength(1)
