@@ -28,4 +28,19 @@ describe('Use Todo Composable', () => {
     if (todoId) deleteTodo(todoId)
     expect(todoList.value.length).toBe(0)
   })
+  it('toggle isDone', async () => {
+    const { todoList, toggleIsDone } = useTodo()
+    todoList.value = [
+      {
+        id: '1',
+        title: 'Arrumar a casa',
+        isDone: false,
+      },
+    ]
+    toggleIsDone('1')
+    expect(todoList.value[0]?.isDone).toBe(true)
+
+    toggleIsDone('1')
+    expect(todoList.value[0]?.isDone).toBe(false)
+  })
 })
