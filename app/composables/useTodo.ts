@@ -20,7 +20,14 @@ const useTodo = () => {
     todoList.value = todoList.value.filter((item) => item.id !== id)
   }
 
-  return { todoList, addTodo, deleteTodo }
+  const toggleIsDone = (id: string) => {
+    const item = todoList.value.find((item) => item.id === id)
+    if (item) {
+      item.isDone = !item.isDone
+    }
+  }
+
+  return { todoList, addTodo, deleteTodo, toggleIsDone }
 }
 
 export default useTodo
