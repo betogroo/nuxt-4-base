@@ -3,7 +3,7 @@
     name: 'ToDoIndex',
   })
 
-  const { todoList, addTodo } = useTodo()
+  const { todoList, addTodo, toggleIsDone } = useTodo()
   const title = ref<string>('')
 
   const handleSubmit = () => {
@@ -13,7 +13,13 @@
 </script>
 
 <template>
-  <todo-item v-for="todo in todoList" :key="todo.id" data-testid="todo-list" :item="todo" />
+  <todo-item
+    v-for="todo in todoList"
+    :key="todo.id"
+    data-testid="todo-list"
+    :item="todo"
+    @toggle-item="toggleIsDone(todo.id)"
+  />
   <div>
     <v-form @submit.prevent="handleSubmit">
       <v-text-field v-model="title" data-testid="title" variant="outlined" />
