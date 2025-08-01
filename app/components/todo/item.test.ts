@@ -13,7 +13,7 @@ describe('Todo Item', () => {
         },
       },
     })
-    expect(wrapper.text()).toBe('Arrumar a Cama')
+    expect(wrapper.text()).toContain('Arrumar a Cama')
   })
   it('emit "toggle-icon" event on click on is done icon', async () => {
     const wrapper = await mountSuspended(TodoItem, {

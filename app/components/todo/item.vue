@@ -10,14 +10,23 @@
 </script>
 
 <template>
-  <v-list-item>
+  <v-list-item color="orange" density="compact" @click="$emit('toggle-item', item.id)">
     <template #prepend>
-      <v-icon
-        data-testid="is-done-icon"
-        :icon="item.isDone ? 'mdi-check' : 'mdi-square-outline'"
-        variant="text"
-        @click="$emit('toggle-item', item.id)"
-    /></template>
-    <template #title>{{ item.title }}</template>
+      <v-avatar data-testid="is-done-icon" size="x-small">
+        <v-icon v-if="!item.isDone" color="teal" icon="mdi-circle-outline" />
+        <v-icon v-else color="deep-purple" icon="mdi-check-circle-outline" />
+      </v-avatar>
+    </template>
+    <v-divider />
+    <template #title>
+      <div class="d-flex">
+        <div
+          class="text-truncate"
+          :class="item.isDone ? 'text-decoration-line-through text-disabled' : ''"
+        >
+          {{ item.title }}
+        </div>
+      </div>
+    </template>
   </v-list-item>
 </template>
