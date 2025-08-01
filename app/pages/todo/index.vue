@@ -3,7 +3,7 @@
     name: 'ToDoIndex',
   })
 
-  const { todoList, addTodo, toggleIsDone } = useTodo()
+  const { todoList, addTodo, toggleIsDone, deleteTodo } = useTodo()
   const title = ref<string>('')
 
   const handleSubmit = () => {
@@ -37,6 +37,7 @@
           :key="todo.id"
           data-testid="todo-list"
           :item="todo"
+          @delete-item="deleteTodo(todo.id)"
           @toggle-item="toggleIsDone(todo.id)"
         />
       </v-list>
