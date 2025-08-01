@@ -31,4 +31,20 @@ describe('Todo Item', () => {
     expect(wrapper.emitted('toggle-item')).toBeTruthy()
     expect(wrapper.emitted('toggle-item')?.length).toBe(1)
   })
+  it('emit "trash-icon" event on click on trash icon', async () => {
+    const wrapper = await mountSuspended(TodoItem, {
+      props: {
+        item: {
+          id: '',
+          title: 'Arrumar a Cama',
+          isDone: false,
+        },
+      },
+    })
+    const trashIcon = wrapper.find('[data-testid="trash-icon"]')
+    await trashIcon.trigger('click')
+
+    expect(wrapper.emitted('delete-item')).toBeTruthy()
+    expect(wrapper.emitted('delete-item')?.length).toBe(1)
+  })
 })
