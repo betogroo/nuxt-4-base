@@ -41,6 +41,9 @@
           @toggle-item="toggleIsDone(todo.id)"
         />
       </v-list>
+      <v-alert v-else class="my-2" data-testid="no-todo" type="error" variant="outlined"
+        >Nenhum compromisso cadastrado</v-alert
+      >
     </v-sheet>
   </v-container>
 </template>
