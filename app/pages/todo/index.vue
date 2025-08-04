@@ -3,7 +3,7 @@
     name: 'ToDoIndex',
   })
 
-  const { todoList, addTodo, toggleIsDone, deleteTodo } = useTodo()
+  const { todoList, addTodo, toggleIsDone, deleteTodo, completedTodos, pendingTodos } = useTodo()
   const title = ref<string>('')
 
   const handleSubmit = () => {
@@ -32,13 +32,29 @@
         </v-row>
       </v-form>
       <v-list v-if="todoList.length" border class="my-2" data-testid="todo-list" rounded="lg">
-        <todo-item
-          v-for="todo in todoList"
-          :key="todo.id"
-          :item="todo"
-          @delete-item="deleteTodo(todo.id)"
-          @toggle-item="toggleIsDone(todo.id)"
-        />
+        <template v-if="pendingTodos.length">
+          <v-fade-transition group>
+            <todo-item
+              v-for="todo in pendingTodos"
+              :key="todo.id"
+              :item="todo"
+              @delete-item="deleteTodo(todo.id)"
+              @toggle-item="toggleIsDone(todo.id)"
+            />
+          </v-fade-transition>
+        </template>
+        <v-divider v-if="completedTodos.length" class="p-3 m-3" thickness="5" />
+        <template v-if="completedTodos.length">
+          <v-fade-transition group>
+            <todo-item
+              v-for="todo in completedTodos"
+              :key="todo.id"
+              :item="todo"
+              @delete-item="deleteTodo(todo.id)"
+              @toggle-item="toggleIsDone(todo.id)"
+            />
+          </v-fade-transition>
+        </template>
       </v-list>
       <v-alert v-else class="my-2" data-testid="no-todo" type="error" variant="outlined"
         >Nenhum compromisso cadastrado</v-alert

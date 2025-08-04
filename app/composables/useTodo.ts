@@ -26,8 +26,10 @@ const useTodo = () => {
       item.isDone = !item.isDone
     }
   }
+  const completedTodos = computed(() => todoList.value.filter((item) => item.isDone))
+  const pendingTodos = computed(() => todoList.value.filter((item) => !item.isDone))
 
-  return { todoList, addTodo, deleteTodo, toggleIsDone }
+  return { todoList, addTodo, deleteTodo, toggleIsDone, completedTodos, pendingTodos }
 }
 
 export default useTodo
