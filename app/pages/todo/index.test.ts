@@ -39,5 +39,6 @@ describe('Todo Index Page', () => {
   it('does not render the todo list if empty', async () => {
     const wrapper = await mountSuspended(TodoIndex)
     expect(wrapper.find('[data-testid="todo-list"]').exists()).toBe(false)
+    expect(wrapper.find('[data-testid="no-todo"]').exists()).toBe(true)
   })
 })
