@@ -31,11 +31,10 @@
           >
         </v-row>
       </v-form>
-      <v-list v-if="todoList.length" border class="my-2" rounded="lg">
+      <v-list v-if="todoList.length" border class="my-2" data-testid="todo-list" rounded="lg">
         <todo-item
           v-for="todo in todoList"
           :key="todo.id"
-          data-testid="todo-list"
           :item="todo"
           @delete-item="deleteTodo(todo.id)"
           @toggle-item="toggleIsDone(todo.id)"
