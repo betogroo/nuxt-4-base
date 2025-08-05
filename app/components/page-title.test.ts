@@ -1,6 +1,6 @@
 import { mountSuspended } from '@nuxt/test-utils/runtime'
 import { it, expect, describe } from 'vitest'
-import PageTitle from '../../app/components/page-title.vue'
+import { PageTitle } from '#components'
 
 describe('page-title', () => {
   it('component exists', async () => {
