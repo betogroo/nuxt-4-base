@@ -14,7 +14,6 @@
   }
 
   const handleDelete = (id: string) => {
-    console.log(id)
     deleteTodo(id)
   }
 
