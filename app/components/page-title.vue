@@ -2,6 +2,7 @@
   interface Props {
     title?: string
   }
+  defineOptions({ name: 'PageTitle' })
   const { title = 'Título' } = defineProps<Props>()
 </script>
 
