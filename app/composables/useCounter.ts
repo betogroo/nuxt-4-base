@@ -1,5 +1,8 @@
+import { useStorage } from '@vueuse/core'
 const useCounter = () => {
-  const displayNumber = ref<number>(0)
+  const displayNumber = useStorage<number>('counter-display-number', 0, undefined, {
+    initOnMounted: true,
+  })
   const maxValue = ref<number>(10)
 
   const incrementValue = () => {
