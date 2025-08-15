@@ -17,7 +17,7 @@ describe('nav-bar', () => {
   })
   it('possui três links', async () => {
     const links = wrapper.findAll('a')
-    expect(links.length).toBe(4)
+    expect(links.length).toBe(5)
   })
   it('link home exists', async () => {
     const home = wrapper.get('[data-testid="link-home"]')
@@ -38,5 +38,10 @@ describe('nav-bar', () => {
     const todo = wrapper.get('[data-testid="link-todo"]')
     expect(todo.attributes('href')).toBe('/todo')
     expect(todo.text()).toBe('Todo')
+  })
+  it('link zod exists', async () => {
+    const zod = wrapper.get('[data-testid="link-zod"]')
+    expect(zod.attributes('href')).toBe('/zod')
+    expect(zod.text()).toBe('Zod')
   })
 })
