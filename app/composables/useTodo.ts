@@ -1,19 +1,20 @@
-export interface TodoItem {
-  id: string
-  title: string
-  isDone: boolean
-}
+import { TaskRowSchema, z, type TaskRow } from '~/schemas'
 const useTodo = () => {
-  const todoList = ref<TodoItem[]>([])
+  const todoList = ref<TaskRow[]>([])
 
   const addTodo = (title: string) => {
     if (!title.trim()) return
-    const newTodo: TodoItem = {
+    const newTodo: TaskRow = {
       id: crypto.randomUUID(),
       title,
       isDone: false,
     }
-    todoList.value.push(newTodo)
+    const result = TaskRowSchema.safeParse(newTodo)
+    if (!result.success) {
+      console.log(z.prettifyError(result.error))
+      return
+    }
+    todoList.value.push(result.data)
   }
 
   const deleteTodo = (id: string) => {
