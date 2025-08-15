@@ -1,12 +1,7 @@
 <script setup lang="ts">
-  import * as z from 'zod'
-  const TaskSchema = z.object({
-    id: z.uuid(),
-    title: z.string().min(1, { error: 'Campo Obrigatório (Erro Personalizado)' }),
-    isDone: z.boolean(),
-  })
+  import { z, TaskRowSchema } from '~/schemas'
 
-  type Task = z.infer<typeof TaskSchema>
+  type Task = z.infer<typeof TaskRowSchema>
 
   const task = ref<Task>({
     id: crypto.randomUUID(),
@@ -20,14 +15,12 @@
   })
 
   const testParsedData = (task: Task) => {
-    const result = TaskSchema.safeParse(task)
+    const result = TaskRowSchema.safeParse(task)
     if (!result.success) {
       const pretty = z.prettifyError(result.error)
-      //alert(result.error.message) // ZodError instance
-
       alert(pretty)
     } else {
-      console.log(TaskSchema.meta())
+      console.log(TaskRowSchema.meta())
       alert(result.data.title)
     }
   }
