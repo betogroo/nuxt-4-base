@@ -20,7 +20,7 @@
     </template>
 
     <template #append>
-      <v-avatar size="x-small">
+      <v-avatar v-if="item.isDone" size="x-small">
         <v-icon
           color="error"
           data-testid="trash-icon"
