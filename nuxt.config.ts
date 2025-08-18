@@ -14,6 +14,7 @@ export default defineNuxtConfig({
     '@nuxt/test-utils/module',
     '@vueuse/nuxt',
     '@nuxtjs/supabase',
+    '@pinia/nuxt',
   ],
   app: {
     head: {
