@@ -5,20 +5,20 @@
     name: 'ToDoIndex',
   })
 
-  const { addTodo, toggleIsDone, deleteTodo, completedTodos, pendingTodos } = useTodo()
+  const todo = useTodoStore()
   const title = ref<string>('')
 
   const handleSubmit = () => {
-    addTodo(title.value)
+    todo.addTodo(title.value)
     title.value = ''
   }
 
   const handleDelete = (id: string) => {
-    deleteTodo(id)
+    todo.deleteTodo(id)
   }
 
   const handleToggle = (id: string) => {
-    toggleIsDone(id)
+    todo.toggleIsDone(id)
     console.log(id)
   }
 </script>
@@ -43,8 +43,8 @@
         </v-row>
       </v-form>
       <TodoList
-        :completed-todos="completedTodos"
-        :pending-todos="pendingTodos"
+        :completed-todos="todo.completedTodos"
+        :pending-todos="todo.pendingTodos"
         @delete-item="handleDelete"
         @toggle-is-done="handleToggle"
       />
