@@ -1,7 +1,7 @@
 <script setup lang="ts">
-  import type { TodoItem } from '~/composables/useTodo'
+  import type { TaskRow } from '~/schemas'
   interface Props {
-    item: TodoItem
+    item: TaskRow
   }
   const { item } = defineProps<Props>()
   const $emit = defineEmits<{
@@ -11,7 +11,7 @@
 </script>
 
 <template>
-  <v-list-item color="orange" density="compact" @click="$emit('toggle-item', item.id)">
+  <v-list-item color="orange" @click="$emit('toggle-item', item.id)">
     <template #prepend>
       <v-avatar data-testid="is-done-icon" size="x-small">
         <v-icon v-if="!item.isDone" color="teal" icon="mdi-circle-outline" />

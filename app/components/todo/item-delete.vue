@@ -11,7 +11,7 @@
 </script>
 
 <template>
-  <v-list-item append-icon="transparent" density="compact">
+  <v-list-item append-icon="transparent">
     <template #append>
       <v-sheet class="d-flex ga-5 ml-2 w-10">
         <v-avatar size="x-small">
