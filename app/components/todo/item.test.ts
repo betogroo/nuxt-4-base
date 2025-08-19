@@ -31,13 +31,40 @@ describe('Todo Item', () => {
     expect(wrapper.emitted('toggle-item')).toBeTruthy()
     expect(wrapper.emitted('toggle-item')?.length).toBe(1)
   })
-  it('emit "trash-icon" event on click on trash icon', async () => {
+
+  it('delete icon is visible if task is not done', async () => {
     const wrapper = await mountSuspended(TodoItem, {
       props: {
         item: {
           id: '',
           title: 'Arrumar a Cama',
           isDone: false,
+        },
+      },
+    })
+    const deleteIcon = wrapper.findComponent('[data-testid="trash-icon"]')
+    expect(deleteIcon.exists()).toBe(false)
+  })
+  it('renders delete icon on task is done', async () => {
+    const wrapper = await mountSuspended(TodoItem, {
+      props: {
+        item: {
+          id: '',
+          title: 'Arrumar a Cama',
+          isDone: true,
+        },
+      },
+    })
+    const deleteIcon = wrapper.findComponent('[data-testid="trash-icon"]')
+    expect(deleteIcon.exists()).toBe(true)
+  })
+  it('emit "trash-icon" event on click on trash icon', async () => {
+    const wrapper = await mountSuspended(TodoItem, {
+      props: {
+        item: {
+          id: '',
+          title: 'Arrumar a Cama',
+          isDone: true,
         },
       },
     })

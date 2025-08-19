@@ -1,7 +1,7 @@
 <script setup lang="ts">
-  import type { TodoItem } from '~/composables/useTodo'
+  import type { TaskRow } from '~/schemas'
   interface Props {
-    item: TodoItem
+    item: TaskRow
   }
   const { item } = defineProps<Props>()
   const $emit = defineEmits<{
@@ -11,9 +11,9 @@
 </script>
 
 <template>
-  <v-list-item append-icon="transparent" density="compact">
+  <v-list-item append-icon="transparent">
     <template #append>
-      <v-sheet class="d-flex ga-5 ml-2">
+      <v-sheet class="d-flex ga-5 ml-2 w-10">
         <v-avatar size="x-small">
           <v-icon
             color="error"
