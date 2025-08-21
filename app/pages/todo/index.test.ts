@@ -41,10 +41,13 @@ describe('Todo Index Page', async () => {
   it('add new todo and clear input text', async () => {
     //const wrapper = await mountSuspended(TodoIndex)
     expect(wrapper.findAll('[data-testid="todo-list"]')).toHaveLength(0)
+
     const textfield = wrapper.get('[data-testid="title"] input')
     const submit = wrapper.get('[data-testid="submit"]')
+
     await textfield.setValue('Descongelar a Carne')
     await submit.trigger('submit')
+    await wrapper.vm.$nextTick()
     expect(wrapper.findAll('[data-testid="todo-list"]')).toHaveLength(1)
     expect((textfield.element as HTMLInputElement).value).toBe('')
   })
