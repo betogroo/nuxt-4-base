@@ -32,4 +32,7 @@ export default defineNuxtConfig({
 
     redirect: true,
   },
+  imports: {
+    dirs: ['utils/**'],
+  },
 })
