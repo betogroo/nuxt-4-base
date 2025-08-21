@@ -8,16 +8,16 @@
   const todo = useTodoStore()
   const title = ref<string>('')
 
-  const handleSubmit = () => {
-    todo.addTodo(title.value)
+  const handleSubmit = async () => {
+    await todo.addTodo(title.value)
     title.value = ''
   }
 
-  const handleDelete = (id: string) => {
+  const handleDelete = async (id: string) => {
     todo.deleteTodo(id)
   }
 
-  const handleToggle = (id: string) => {
+  const handleToggle = async (id: string) => {
     todo.toggleIsDone(id)
     console.log(id)
   }
@@ -33,12 +33,19 @@
               v-model="title"
               data-testid="title"
               density="compact"
+              :disabled="todo.isPending"
               hide-details
               variant="outlined"
             />
           </v-col>
           <v-col>
-            <v-btn data-testid="submit" :disabled="!title.trim()" type="submit">+</v-btn></v-col
+            <v-btn
+              data-testid="submit"
+              :disabled="!title.trim()"
+              :loading="todo.isPending"
+              type="submit"
+              >+</v-btn
+            ></v-col
           >
         </v-row>
       </v-form>
@@ -49,5 +56,6 @@
         @toggle-is-done="handleToggle"
       />
     </v-sheet>
+    {{ todo.isPending }}
   </v-container>
 </template>

@@ -17,7 +17,7 @@ describe('Use Todo Composable', () => {
     const { taskList, addTodo } = useTodoStore()
     expect(taskList.length).toBe(0)
     const newTodo = 'Arrumar a Cama'
-    addTodo(newTodo)
+    await addTodo(newTodo)
     expect(taskList.length).toBe(1)
   })
   it('delete todo item', () => {
