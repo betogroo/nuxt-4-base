@@ -1,11 +1,11 @@
 import { TaskRowSchema, z, type TaskRow } from '~/schemas'
 export const useTodoStore = defineStore('todo', () => {
   const taskList = ref<TaskRow[]>([])
-  const isPending = ref(false)
+  const { startPending, stopPending } = usePending()
 
   const addTodo = async (title: string) => {
     if (!title.trim()) return
-    isPending.value = true
+    startPending('addTodo')
     const newTodo: TaskRow = {
       id: crypto.randomUUID(),
       title,
@@ -21,7 +21,7 @@ export const useTodoStore = defineStore('todo', () => {
     } catch (error) {
       console.log(error)
     } finally {
-      isPending.value = false
+      stopPending()
     }
   }
 
@@ -47,6 +47,5 @@ export const useTodoStore = defineStore('todo', () => {
     pendingTodos,
     toggleIsDone,
     $reset,
-    isPending,
   }
 })

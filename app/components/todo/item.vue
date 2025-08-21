@@ -2,8 +2,9 @@
   import type { TaskRow } from '~/schemas'
   interface Props {
     item: TaskRow
+    isPending?: boolean
   }
-  const { item } = defineProps<Props>()
+  const { item, isPending = true } = defineProps<Props>()
   const $emit = defineEmits<{
     'toggle-item': [id: string]
     'delete-item': [id: string]
@@ -14,8 +15,20 @@
   <v-list-item color="orange" @click="$emit('toggle-item', item.id)">
     <template #prepend>
       <v-avatar data-testid="is-done-icon" size="x-small">
-        <v-icon v-if="!item.isDone" color="teal" icon="mdi-circle-outline" />
-        <v-icon v-else color="deep-purple" icon="mdi-check-circle-outline" />
+        <v-btn
+          v-if="!item.isDone"
+          color="teal"
+          icon="mdi-circle-outline"
+          :loading="isPending"
+          variant="text"
+        />
+        <v-btn
+          v-else
+          color="deep-purple"
+          icon="mdi-check-circle-outline"
+          :loading="isPending"
+          variant="text"
+        />
       </v-avatar>
     </template>
 

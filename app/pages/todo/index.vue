@@ -6,6 +6,7 @@
   })
 
   const todo = useTodoStore()
+  const { pendingState } = usePending()
   const title = ref<string>('')
 
   const handleSubmit = async () => {
@@ -33,7 +34,7 @@
               v-model="title"
               data-testid="title"
               density="compact"
-              :disabled="todo.isPending"
+              :disabled="pendingState?.loading"
               hide-details
               variant="outlined"
             />
@@ -42,7 +43,7 @@
             <v-btn
               data-testid="submit"
               :disabled="!title.trim()"
-              :loading="todo.isPending"
+              :loading="pendingState?.loading"
               type="submit"
               >+</v-btn
             ></v-col
@@ -56,6 +57,5 @@
         @toggle-is-done="handleToggle"
       />
     </v-sheet>
-    {{ todo.isPending }}
   </v-container>
 </template>
