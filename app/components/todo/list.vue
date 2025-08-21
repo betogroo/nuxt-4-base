@@ -1,7 +1,8 @@
 <script setup lang="ts">
+  import type { TaskRow } from '~/schemas'
   interface Props {
-    pendingTodos: TodoItem[]
-    completedTodos: TodoItem[]
+    pendingTodos: TaskRow[]
+    completedTodos: TaskRow[]
   }
   const { pendingTodos, completedTodos } = defineProps<Props>()
 
