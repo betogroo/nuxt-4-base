@@ -11,6 +11,8 @@
     'toggle-is-done': [id: string]
   }>()
 
+  const { isPending } = usePending()
+
   const confirmId = ref<string | null>(null)
   const startConfirm = (id: string) => {
     confirmId.value = id
@@ -39,6 +41,7 @@
           />
           <todo-item
             v-else
+            :is-pending="isPending('deleteTodo', todo.id)"
             :item="todo"
             @delete-item="startConfirm(todo.id)"
             @toggle-item="$emit('toggle-is-done', todo.id)"
@@ -56,6 +59,7 @@
           />
           <todo-item
             v-else
+            :is-pending="isPending('deleteTodo', todo.id)"
             :item="todo"
             @delete-item="startConfirm(todo.id)"
             @toggle-item="$emit('toggle-is-done', todo.id)"

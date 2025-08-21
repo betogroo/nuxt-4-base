@@ -25,8 +25,16 @@ export const useTodoStore = defineStore('todo', () => {
     }
   }
 
-  const deleteTodo = (id: string) => {
-    taskList.value = taskList.value.filter((item) => item.id !== id)
+  const deleteTodo = async (id: string) => {
+    startPending('deleteTodo', id)
+    try {
+      if (import.meta.env.MODE !== 'test') await delay(5000)
+      taskList.value = taskList.value.filter((item) => item.id !== id)
+    } catch (error) {
+      console.log(error)
+    } finally {
+      stopPending()
+    }
   }
 
   const toggleIsDone = (id: string) => {

@@ -6,7 +6,7 @@
   })
 
   const todo = useTodoStore()
-  const { pendingState } = usePending()
+  const { pendingState, isPending } = usePending()
   const title = ref<string>('')
 
   const handleSubmit = async () => {
@@ -15,7 +15,7 @@
   }
 
   const handleDelete = async (id: string) => {
-    todo.deleteTodo(id)
+    await todo.deleteTodo(id)
   }
 
   const handleToggle = async (id: string) => {
@@ -34,7 +34,7 @@
               v-model="title"
               data-testid="title"
               density="compact"
-              :disabled="pendingState?.loading"
+              :disabled="isPending('addTodo')"
               hide-details
               variant="outlined"
             />
@@ -43,7 +43,7 @@
             <v-btn
               data-testid="submit"
               :disabled="!title.trim()"
-              :loading="pendingState?.loading"
+              :loading="isPending('addTodo')"
               type="submit"
               >+</v-btn
             ></v-col
@@ -52,10 +52,12 @@
       </v-form>
       <TodoList
         :completed-todos="todo.completedTodos"
+        :pending-state="pendingState"
         :pending-todos="todo.pendingTodos"
         @delete-item="handleDelete"
         @toggle-is-done="handleToggle"
       />
     </v-sheet>
+    {{ pendingState }}
   </v-container>
 </template>
