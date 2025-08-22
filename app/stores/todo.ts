@@ -37,10 +37,18 @@ export const useTodoStore = defineStore('todo', () => {
     }
   }
 
-  const toggleIsDone = (id: string) => {
-    const item = taskList.value.find((item) => item.id === id)
-    if (item) {
-      item.isDone = !item.isDone
+  const toggleIsDone = async (id: string) => {
+    startPending('toggleIsDone', id)
+    try {
+      if (import.meta.env.MODE !== 'test') await delay()
+      const item = taskList.value.find((item) => item.id === id)
+      if (item) {
+        item.isDone = !item.isDone
+      }
+    } catch (error) {
+      console.log(error)
+    } finally {
+      stopPending()
     }
   }
   const $reset = () => (taskList.value = [])
