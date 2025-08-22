@@ -12,7 +12,7 @@ export const useTodoStore = defineStore('todo', () => {
       isDone: false,
     }
     try {
-      if (import.meta.env.MODE !== 'test') await delay(5000)
+      if (import.meta.env.MODE !== 'test') await delay()
       const result = TaskRowSchema.safeParse(newTodo)
       if (!result.success) {
         throw new Error(z.prettifyError(result.error))
@@ -28,7 +28,7 @@ export const useTodoStore = defineStore('todo', () => {
   const deleteTodo = async (id: string) => {
     startPending('deleteTodo', id)
     try {
-      if (import.meta.env.MODE !== 'test') await delay(5000)
+      if (import.meta.env.MODE !== 'test') await delay()
       taskList.value = taskList.value.filter((item) => item.id !== id)
     } catch (error) {
       console.log(error)
@@ -37,10 +37,18 @@ export const useTodoStore = defineStore('todo', () => {
     }
   }
 
-  const toggleIsDone = (id: string) => {
-    const item = taskList.value.find((item) => item.id === id)
-    if (item) {
-      item.isDone = !item.isDone
+  const toggleIsDone = async (id: string) => {
+    startPending('toggleIsDone', id)
+    try {
+      if (import.meta.env.MODE !== 'test') await delay()
+      const item = taskList.value.find((item) => item.id === id)
+      if (item) {
+        item.isDone = !item.isDone
+      }
+    } catch (error) {
+      console.log(error)
+    } finally {
+      stopPending()
     }
   }
   const $reset = () => (taskList.value = [])
