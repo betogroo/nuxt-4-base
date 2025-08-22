@@ -15,29 +15,19 @@
   <v-list-item color="orange" @click="$emit('toggle-item', item.id)">
     <template #prepend>
       <v-avatar data-testid="is-done-icon" size="x-small">
-        <v-btn
-          v-if="!item.isDone"
-          color="teal"
-          icon="mdi-circle-outline"
-          :loading="isPending"
-          variant="text"
-        />
-        <v-btn
-          v-else
-          color="deep-purple"
-          icon="mdi-check-circle-outline"
-          :loading="isPending"
-          variant="text"
-        />
+        <v-btn v-if="!item.isDone" color="teal" icon="mdi-circle-outline" variant="text" />
+        <v-btn v-else color="deep-purple" icon="mdi-check-circle-outline" variant="text" />
       </v-avatar>
     </template>
 
     <template #append>
       <v-avatar v-if="item.isDone" size="x-small">
-        <v-icon
+        <v-btn
           color="error"
           data-testid="trash-icon"
           icon="mdi-trash-can-outline"
+          :loading="isPending"
+          variant="text"
           @click.stop="$emit('delete-item', item.id)"
         />
       </v-avatar>
