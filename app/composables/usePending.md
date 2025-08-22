@@ -58,7 +58,7 @@ stopPending()
 
 ### `isPending(action: string, item?: string | number): boolean`
 
-Verifica se determinada ação/ítem está em estado pendente.
+Verifica se determinada ação/item está em estado pendente.
 Muito útil para **bindings de `:loading` em botões**.
 
 ```vue
