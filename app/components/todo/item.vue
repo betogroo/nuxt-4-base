@@ -2,9 +2,9 @@
   import type { TaskRow } from '~/schemas'
   interface Props {
     item: TaskRow
-    isPending?: boolean
+    isPending?: (action: string, item?: string) => boolean
   }
-  const { item, isPending = true } = defineProps<Props>()
+  const { item, isPending = () => false } = defineProps<Props>()
   const $emit = defineEmits<{
     'toggle-item': [id: string]
     'delete-item': [id: string]
@@ -26,7 +26,7 @@
           color="error"
           data-testid="trash-icon"
           icon="mdi-trash-can-outline"
-          :loading="isPending"
+          :loading="isPending('deleteTodo', item.id)"
           variant="text"
           @click.stop="$emit('delete-item', item.id)"
         />
