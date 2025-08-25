@@ -13,7 +13,8 @@
     "format": "prettier --write .",
     "prepare": "husky",
     "test": "vitest run",
-    "ncu": "ncu -i --format group"
+    "ncu": "ncu -i --format group",
+    "gen-db-types": "npx supabase gen types typescript --project-id ononpdjuwjkqsfewrtoy > ./app/schemas/supabase/database.d.ts"
   },
   "lint-staged": {
     "*.{js,ts,vue}": [
@@ -45,6 +46,7 @@
     "lint-staged": "^16.1.4",
     "playwright-core": "^1.54.2",
     "prettier": "^3.6.2",
+    "supabase": "^2.34.3",
     "vitest": "^3.2.4",
     "vuetify-nuxt-module": "^0.18.7"
   }
