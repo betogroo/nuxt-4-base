@@ -3,6 +3,12 @@
     layout: 'no-nav',
     name: 'Login',
   })
+
+  const { login } = useAuth()
+  const { isPending } = usePending()
+
+  const email = ref('')
+  const password = ref('')
 </script>
 
 <template>
@@ -19,8 +25,9 @@
       >
         <div class="d-flex flex-column justify-end">
           <h1 class="text-h4">Login</h1>
-          <v-form class="d-flex flex-column ga-2 mt-4">
+          <v-form class="d-flex flex-column ga-2 mt-4" @submit.prevent="login(email, password)">
             <v-text-field
+              v-model="email"
               density="compact"
               hide-details
               label="Email"
@@ -28,13 +35,14 @@
               variant="outlined"
             />
             <v-text-field
+              v-model="password"
               density="compact"
               hide-details
               label="Senha"
               type="password"
               variant="outlined"
             />
-            <v-btn block color="primary">Login</v-btn>
+            <v-btn block color="primary" :loading="isPending('login')" type="submit">Login</v-btn>
           </v-form>
           <div>link</div>
         </div>
