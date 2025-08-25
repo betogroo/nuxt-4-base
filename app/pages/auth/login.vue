@@ -1,19 +1,44 @@
 <script setup lang="ts">
   definePageMeta({
     layout: 'no-nav',
+    name: 'Login',
   })
 </script>
 
 <template>
   <v-responsive class="fill-height bg-indigo">
-    <v-container class="justify-center fill-height align-center">
-      <v-sheet border class="ma-3 pa-3" height="360" width="360">
-        <div class="d-flex flex-column justify-end ga-3">
-          <h1 class="text-h5">Login</h1>
-          <v-text-field hide-details type="email" variant="outlined" />
-          <v-btn block>Login</v-btn>
+    <v-container class="d-flex justify-center align-center fill-height">
+      <v-card
+        border
+        class="d-flex flex-column justify-center ma-3 pa-3 bg-white"
+        flat
+        height="360"
+        rounded="md"
+        variant="outlined"
+        width="360"
+      >
+        <div class="d-flex flex-column justify-end">
+          <h1 class="text-h4">Login</h1>
+          <v-form class="d-flex flex-column ga-2 mt-4">
+            <v-text-field
+              density="compact"
+              hide-details
+              label="Email"
+              type="email"
+              variant="outlined"
+            />
+            <v-text-field
+              density="compact"
+              hide-details
+              label="Senha"
+              type="password"
+              variant="outlined"
+            />
+            <v-btn block color="primary">Login</v-btn>
+          </v-form>
+          <div>link</div>
         </div>
-      </v-sheet>
+      </v-card>
     </v-container>
   </v-responsive>
 </template>
