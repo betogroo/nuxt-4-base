@@ -1,18 +1,28 @@
-//import type { Database } from '~/schemas'
+import type { Database } from '~/schemas'
 import { delay } from '#imports'
 const useAuth = () => {
   const { startPending, stopPending } = usePending()
 
   const errorMessage = ref<string | null>(null)
-  // const supabase = useSupabaseClient<Database>()
+  const supabase = useSupabaseClient<Database>()
   const login = async (email: string, password: string) => {
     startPending('login')
-    errorMessage.value = null
-    await delay(2000, 'Testing Login')
-    console.log(email, password)
-    stopPending()
+    try {
+      errorMessage.value = null
+      await delay(2000, 'Testing Login')
+      const { error } = await supabase.auth.signInWithPassword({ email, password })
+      if (error) throw error
+    } catch (err) {
+      console.log(err)
+    } finally {
+      stopPending()
+    }
   }
-  return { login }
+
+  const logout = async () => {
+    await supabase.auth.signOut()
+  }
+  return { login, logout }
 }
 
 export default useAuth
