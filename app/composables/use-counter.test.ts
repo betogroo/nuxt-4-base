@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest'
-import useCounter from '~/composables/useCounter'
+import useCounter from '~/composables/use-counter'
 
 describe('useCounter', () => {
   it('starts with 0 as default value', () => {
