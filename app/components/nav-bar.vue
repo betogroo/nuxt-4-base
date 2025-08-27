@@ -1,7 +1,7 @@
 <script setup lang="ts">
   defineOptions({ name: 'NavBar' })
   const user = useSupabaseUser()
-  console.log(user.value)
+
   const { logout } = useAuth()
 
   const handleLogout = async () => {
