@@ -1,4 +1,5 @@
 export * as z from 'zod'
-export * from './features/todo/task.schema'
+export * from './auth/auth.schema'
 export * from './app/pending.schema'
+export * from './features/todo/task.schema'
 export type { Tables, Database } from './supabase/database'
