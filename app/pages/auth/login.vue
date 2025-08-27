@@ -9,6 +9,7 @@
 
   const email = ref('')
   const password = ref('')
+  useUserStatus('/')
 </script>
 
 <template>
