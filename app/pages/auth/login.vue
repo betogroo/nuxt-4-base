@@ -1,4 +1,6 @@
 <script setup lang="ts">
+  import type { UserLogin } from '~/schemas'
+
   definePageMeta({
     layout: 'no-nav',
     name: 'Login',
@@ -7,8 +9,10 @@
   const { login } = useAuth()
   const { isPending } = usePending()
 
-  const email = ref('')
-  const password = ref('')
+  const handleLogin = async (userLogin: UserLogin) => {
+    await login(userLogin.email, userLogin.password)
+  }
+
   useUserStatus('/')
 </script>
 
@@ -26,25 +30,8 @@
       >
         <div class="d-flex flex-column justify-end">
           <h1 class="text-h4">Login</h1>
-          <v-form class="d-flex flex-column ga-2 mt-4" @submit.prevent="login(email, password)">
-            <v-text-field
-              v-model="email"
-              density="compact"
-              hide-details
-              label="Email"
-              type="email"
-              variant="outlined"
-            />
-            <v-text-field
-              v-model="password"
-              density="compact"
-              hide-details
-              label="Senha"
-              type="password"
-              variant="outlined"
-            />
-            <v-btn block color="primary" :loading="isPending('login')" type="submit">Login</v-btn>
-          </v-form>
+          <auth-form-login :is-pending="isPending" @login="handleLogin" />
+
           <div>link</div>
         </div>
       </v-card>
