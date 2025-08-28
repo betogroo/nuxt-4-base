@@ -1,5 +1,6 @@
 <script setup lang="ts">
-  import type { UserLogin } from '~/schemas'
+  import { UserLoginSchema, type UserLogin } from '~/schemas'
+  import { useField, useForm } from 'vee-validate'
 
   interface Props {
     isPending?: (action: string, item?: string) => boolean
@@ -11,33 +12,48 @@
   }>()
 
   const userLogin = ref<UserLogin>({
-    email: '',
-    password: '',
+    email: 'luizhumberto@gmail.com',
+    password: '123456',
   })
 
-  const handleSubmit = (userLogin: UserLogin) => {
-    $emit('login', userLogin)
-  }
+  const { values, handleSubmit, meta } = useForm<UserLogin>({
+    validationSchema: UserLoginSchema,
+    initialValues: userLogin.value,
+  })
+  const { value: email, errorMessage: emailError, meta: emailMeta } = useField<string>('email')
+  const {
+    value: password,
+    errorMessage: passwordError,
+    meta: passwordMeta,
+  } = useField<string>('password')
+
+  const onSubmit = handleSubmit(async () => {
+    $emit('login', values)
+  })
 </script>
 
 <template>
-  <v-form class="d-flex flex-column ga-2 mt-4" @submit.prevent="handleSubmit(userLogin)">
+  <v-form class="d-flex flex-column ga-2 mt-4" @submit.prevent="onSubmit">
     <v-text-field
-      v-model="userLogin.email"
+      v-model="email"
       density="compact"
-      hide-details
+      :error-messages="emailError"
+      :hide-details="emailMeta.valid"
       label="Email"
       type="email"
       variant="outlined"
     />
     <v-text-field
-      v-model="userLogin.password"
+      v-model="password"
       density="compact"
-      hide-details
+      :error-messages="passwordError"
+      :hide-details="passwordMeta.valid"
       label="Senha"
       type="password"
       variant="outlined"
     />
-    <v-btn block color="primary" :loading="isPending('login')" type="submit">Login</v-btn>
+    <v-btn block color="primary" :disabled="!meta.valid" :loading="isPending('login')" type="submit"
+      >Login</v-btn
+    >
   </v-form>
 </template>
