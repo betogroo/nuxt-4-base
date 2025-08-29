@@ -6,8 +6,13 @@ export const TaskSchema = z.object({
   isDone: z.boolean(),
 })
 
+export const TaskInsertSchema = TaskSchema.pick({
+  title: true,
+})
+
 export const TaskRowSchema = TaskSchema
 export const TaskListSchema = z.array(TaskRowSchema)
 
 export type TaskRow = z.infer<typeof TaskRowSchema>
 export type TaskList = z.infer<typeof TaskListSchema>
+export type TaskInsert = z.infer<typeof TaskInsertSchema>
