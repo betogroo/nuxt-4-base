@@ -8,7 +8,12 @@
   const todo = useTodoStore()
   const { pendingState, isPending } = usePending()
 
-  const handleSubmit = async (title: string, onSuccess: () => void) => {
+  const handleSubmit = async (title: string, onSuccess: () => void, onError: () => void) => {
+    const error = false
+    if (error) {
+      onError()
+      return
+    }
     await todo.addTodo(title)
     onSuccess()
   }
@@ -28,7 +33,7 @@
     <v-sheet border class="pa-3" rounded="lg">
       <todo-form-task
         :is-pending="isPending"
-        @add-task="(title, onSuccess) => handleSubmit(title, onSuccess)"
+        @add-task="(title, onSuccess, onError) => handleSubmit(title, onSuccess, onError)"
       />
 
       <TodoList

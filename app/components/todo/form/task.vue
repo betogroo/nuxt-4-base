@@ -5,13 +5,20 @@
   const { isPending = () => false } = defineProps<Props>()
 
   const $emit = defineEmits<{
-    'add-task': [title: string, onSuccess: () => void]
+    'add-task': [title: string, onSuccess: () => void, onError: () => void]
   }>()
   const title = ref<string>('')
   const handleSubmit = () => {
-    $emit('add-task', title.value, () => {
-      title.value = ''
-    })
+    $emit(
+      'add-task',
+      title.value,
+      () => {
+        title.value = ''
+      },
+      () => {
+        console.log('Erro')
+      },
+    )
   }
 </script>
 
