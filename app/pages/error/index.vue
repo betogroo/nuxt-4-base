@@ -12,7 +12,7 @@
       console.log(testData)
     } catch (err) {
       const error = handleError(err)
-      console.log(error, error.message)
+      console.log(error)
     }
   }
 </script>
