@@ -7,11 +7,15 @@
 
   const todo = useTodoStore()
   const { pendingState, isPending } = usePending()
-  const title = ref<string>('')
 
-  const handleSubmit = async () => {
-    await todo.addTodo(title.value)
-    title.value = ''
+  const handleSubmit = async (title: string, onSuccess: () => void, onError: () => void) => {
+    const error = false
+    if (error) {
+      onError()
+      return
+    }
+    await todo.addTodo(title)
+    onSuccess()
   }
 
   const handleDelete = async (id: string) => {
@@ -27,29 +31,11 @@
 <template>
   <v-container border max-width="480">
     <v-sheet border class="pa-3" rounded="lg">
-      <v-form @submit.prevent="handleSubmit">
-        <v-row align="center">
-          <v-col cols="9">
-            <v-text-field
-              v-model="title"
-              data-testid="title"
-              density="compact"
-              :disabled="isPending('addTodo')"
-              hide-details
-              variant="outlined"
-            />
-          </v-col>
-          <v-col>
-            <v-btn
-              data-testid="submit"
-              :disabled="!title.trim()"
-              :loading="isPending('addTodo')"
-              type="submit"
-              >+</v-btn
-            ></v-col
-          >
-        </v-row>
-      </v-form>
+      <todo-form-task
+        :is-pending="isPending"
+        @add-task="(title, onSuccess, onError) => handleSubmit(title, onSuccess, onError)"
+      />
+
       <TodoList
         :completed-todos="todo.completedTodos"
         :pending-state="pendingState"
