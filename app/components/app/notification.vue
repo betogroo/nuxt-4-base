@@ -10,6 +10,7 @@
     :color="notification.color"
     location="top right"
     timeout="3000"
+    timer="white"
   >
     {{ notification.message }}
   </v-snackbar>
