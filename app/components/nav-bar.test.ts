@@ -17,7 +17,7 @@ describe('nav-bar', () => {
   })
   it('possui três links', async () => {
     const links = wrapper.findAll('a')
-    expect(links.length).toBe(5)
+    expect(links.length).toBe(6)
   })
   it('link home exists', async () => {
     const home = wrapper.get('[data-testid="link-home"]')

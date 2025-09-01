@@ -19,6 +19,7 @@
     <NuxtLink data-testid="link-counter" to="/counter">Counter</NuxtLink> |
     <NuxtLink data-testid="link-todo" to="/todo">Todo</NuxtLink> |
     <NuxtLink data-testid="link-zod" to="/zod">Zod</NuxtLink> |
+    <NuxtLink data-testid="link-error" to="/error">Error</NuxtLink> |
     <NuxtLink data-testid="link-about" to="/about">About</NuxtLink>
 
     <template v-if="user">
