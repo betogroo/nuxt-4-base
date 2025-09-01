@@ -1,10 +1,10 @@
 import { z } from 'zod'
 
-export const ErrorSchema = z.object({
+export const AppErrorSchema = z.object({
   message: z.string(),
   code: z.string().optional(),
   field: z.string().optional(),
   cause: z.unknown(),
 })
 
-export type Error = z.infer<typeof ErrorSchema>
+export type AppError = z.infer<typeof AppErrorSchema>
