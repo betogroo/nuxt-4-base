@@ -13,7 +13,8 @@ const useAuth = () => {
       const { error } = await supabase.auth.signInWithPassword({ email, password })
       if (error) throw error
     } catch (err) {
-      console.log(err)
+      const error = handleError(err)
+      console.log(err, error)
     } finally {
       stopPending()
     }
