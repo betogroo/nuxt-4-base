@@ -26,13 +26,16 @@
     "scope": "javascript,typescript",
     "prefix": "v3-composable",
     "body": [
-      "const ${TM_FILENAME_BASE} = () => {",
+      "const ${TM_FILENAME_BASE/^(.*)$/${1:/camelcase}/} = () => {",
       "\treturn {  }",
       "}",
       "",
-      "export default ${TM_FILENAME_BASE}",
+      "export default ${TM_FILENAME_BASE/^(.*)$/${1:/camelcase}/}",
     ],
+    "description": "use-file-name => useFileName",
   },
+
+  //use${TM_FILENAME_BASE/^(.*)$/${1:/pascalcase}/}
   "Vue 3 Define Props": {
     "scope": "javascript,typescript",
     "prefix": "v3-sfc-props",
