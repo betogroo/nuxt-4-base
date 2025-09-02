@@ -17,31 +17,22 @@ describe('nav-bar', () => {
   })
   it('possui três links', async () => {
     const links = wrapper.findAll('a')
-    expect(links.length).toBe(6)
+    expect(links.length).toBe(3)
   })
   it('link home exists', async () => {
     const home = wrapper.get('[data-testid="link-home"]')
     expect(home.attributes('href')).toBe('/')
     expect(home.text()).toBe('Home')
   })
-  it('link counter exists', async () => {
-    const counter = wrapper.get('[data-testid="link-counter"]')
-    expect(counter.attributes('href')).toBe('/counter')
-    expect(counter.text()).toBe('Counter')
+  it('link IIRGD exists', async () => {
+    const iirgd = wrapper.get('[data-testid="link-iirgd"]')
+    expect(iirgd.attributes('href')).toBe('/iirgd')
+    expect(iirgd.text()).toBe('IIRGD')
   })
+
   it('link about exists', async () => {
     const about = wrapper.get('[data-testid="link-about"]')
     expect(about.attributes('href')).toBe('/about')
     expect(about.text()).toBe('About')
-  })
-  it('link todo exists', async () => {
-    const todo = wrapper.get('[data-testid="link-todo"]')
-    expect(todo.attributes('href')).toBe('/todo')
-    expect(todo.text()).toBe('Todo')
-  })
-  it('link zod exists', async () => {
-    const zod = wrapper.get('[data-testid="link-zod"]')
-    expect(zod.attributes('href')).toBe('/zod')
-    expect(zod.text()).toBe('Zod')
   })
 })
