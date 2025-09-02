@@ -23,7 +23,7 @@ export default defineNuxtConfig({
   },
   supabase: {
     redirectOptions: {
-      include: ['/counter'],
+      include: ['/iirgd'],
       callback: '/confirm',
       login: '/auth/login',
       saveRedirectToCookie: true,
