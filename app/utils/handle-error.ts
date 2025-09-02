@@ -8,7 +8,7 @@ export const handleError = (err: unknown): AppError => {
 
   if (err instanceof ZodError) {
     const issue = err.issues[0]
-    notify.notify(issue?.message, 'error')
+    notify.notify(issue?.message ?? 'Erro de Validação', 'error')
     return {
       message: issue?.message || 'Ocorreu um erro inesperado',
       field: issue?.path.join('.') || undefined,
