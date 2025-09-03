@@ -16,7 +16,7 @@
 <template>
   <nav>
     <NuxtLink data-testid="link-home" to="/">Home</NuxtLink> |
-    <NuxtLink data-testid="link-iirgd" to="/iirgd">IIRGD</NuxtLink> |
+    <NuxtLink data-testid="link-iirgd" to="/iirgd/demands">IIRGD</NuxtLink> |
     <NuxtLink data-testid="link-about" to="/about">About</NuxtLink>
 
     <template v-if="user">

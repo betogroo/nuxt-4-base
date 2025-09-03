@@ -5,7 +5,7 @@
 
 <template>
   <v-container>
-    <h1>Sistema RG</h1>
+    <page-title title="Liberação RGs" />
     <iirgd-demand-list>
       <iirgd-demand-item v-for="item in demands" :key="item.id" :item="item" />
     </iirgd-demand-list>
