@@ -4,14 +4,10 @@
     item: DemandItem
   }
   const { item } = defineProps<Props>()
-  const $emit = defineEmits<{
-    'toggle-item': [id: string]
-    'delete-item': [id: string]
-  }>()
 </script>
 
 <template>
-  <v-list-item color="orange" @click="$emit('toggle-item', item.id)">
+  <v-list-item color="orange" :to="{ name: 'iirgd-demands-rg-id', params: { id: item.id } }">
     <template #prepend>
       <v-icon color="red">mdi-badge-account-alert-outline</v-icon>
     </template>
