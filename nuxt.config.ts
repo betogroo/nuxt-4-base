@@ -15,6 +15,7 @@ export default defineNuxtConfig({
     '@vueuse/nuxt',
     '@nuxtjs/supabase',
     '@pinia/nuxt',
+    '@nuxt/icon',
   ],
   app: {
     head: {
