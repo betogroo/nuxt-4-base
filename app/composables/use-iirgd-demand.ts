@@ -1,52 +1,52 @@
 import { DemandListSchema, type DemandItem } from '~/schemas'
 
-const fakeDemands: DemandItem[] = [
+const fakeDemands = [
   {
-    id: crypto.randomUUID(),
-    rg: '12345678',
+    id: '7dfa8c61-1158-4b76-b48f-a518c29ca041',
     name: 'João Silva',
+    rg: '12345678',
     status: 'cadastrado',
   },
   {
-    id: crypto.randomUUID(),
-    rg: '87654321',
+    id: 'c0e36ebf-db90-4ec6-998c-dab8baec5658',
     name: 'Maria Oliveira',
+    rg: '87654321',
     status: 'consultado',
   },
   {
-    id: crypto.randomUUID(),
-    rg: '45678912',
+    id: '9906c5b5-e718-41fb-8a84-7ad08e34e35b',
     name: 'Carlos Souza',
+    rg: '45678912',
     status: 'liberado',
   },
   {
-    id: crypto.randomUUID(),
-    rg: '78912345',
+    id: '1df72b36-b342-4bdc-a673-467deb172b39',
     name: 'Ana Pereira',
+    rg: '78912345',
     status: 'emitido',
   },
   {
-    id: crypto.randomUUID(),
-    rg: '23456789',
+    id: '2562094f-dd59-43a4-b8a7-a462f855e9ea',
     name: 'Fernanda Costa',
+    rg: '23456789',
     status: 'cadastrado',
   },
   {
-    id: crypto.randomUUID(),
-    rg: '56789123',
+    id: 'ad9ec788-3ed2-42ef-9f1c-44034facfb29',
     name: 'Ricardo Almeida',
+    rg: '56789123',
     status: 'consultado',
   },
   {
-    id: crypto.randomUUID(),
-    rg: '34567891',
+    id: 'b7cc40c4-d1a2-4e9d-a2aa-5b1bc7d90321',
     name: 'Beatriz Santos',
+    rg: '34567891',
     status: 'liberado',
   },
   {
-    id: crypto.randomUUID(),
-    rg: '65432198',
+    id: '30774a93-5913-480c-86e5-6fe0e655857f',
     name: 'Paulo Rocha',
+    rg: '65432198',
     status: 'emitido',
   },
 ]
@@ -63,7 +63,11 @@ const useIirgdDemand = () => {
     }
     demands.value = result.data
   }
-  return { demands, fetchDemands }
+
+  const addDemand = (demand: DemandItem) => {
+    demands.value.push(demand)
+  }
+  return { demands, fetchDemands, addDemand }
 }
 
 export default useIirgdDemand
