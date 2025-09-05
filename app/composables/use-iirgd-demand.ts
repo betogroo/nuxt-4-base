@@ -1,6 +1,6 @@
-import { DemandListSchema, type DemandItem } from '~/schemas'
+import { DemandItemSchema, DemandListSchema, type DemandItem } from '~/schemas'
 
-const fakeDemands = [
+const demands = ref<DemandItem[]>([
   {
     id: '7dfa8c61-1158-4b76-b48f-a518c29ca041',
     name: 'João Silva',
@@ -49,25 +49,43 @@ const fakeDemands = [
     rg: '65432198',
     status: 'emitido',
   },
-]
+])
+
+const demand = ref<DemandItem>()
 
 const useIirgdDemand = () => {
-  const demands = ref<DemandItem[]>([])
   const fetchDemands = async () => {
-    const result = DemandListSchema.safeParse(fakeDemands)
+    const result = DemandListSchema.safeParse(demands.value)
 
     if (!result.success) {
       console.log(result.error)
       handleError(result.error)
       return
     }
-    demands.value = result.data
+    console.log(result.data)
   }
 
-  const addDemand = (demand: DemandItem) => {
-    demands.value.push(demand)
+  const addDemand = async () => {
+    const newDemand: DemandItem = {
+      id: crypto.randomUUID(),
+      name: 'Zezão das Couve',
+      rg: '11555888',
+      status: 'cadastrado',
+    }
+    const result = DemandItemSchema.safeParse(newDemand)
+    if (!result.success) {
+      console.log(result.error)
+      handleError(result.error)
+      return
+    }
+    demands.value.push(result.data)
   }
-  return { demands, fetchDemands, addDemand }
+
+  const getDemand = (id: string) => {
+    const result = demands.value.find((item) => item.id === id)
+    demand.value = result
+  }
+  return { demand, demands, fetchDemands, addDemand, getDemand }
 }
 
 export default useIirgdDemand
