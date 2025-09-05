@@ -4,15 +4,27 @@
     item: DemandItem
   }
   const { item } = defineProps<Props>()
+
+  const statusColor = computed(() => {
+    const colors: Record<string, string> = {
+      liberado: 'primary',
+      consultado: 'blue',
+      emitido: 'green',
+    }
+    return colors[item.status] || 'gray'
+  })
 </script>
 
 <template>
-  <v-list-item color="orange" :to="{ name: 'iirgd-demands-rg-id', params: { id: item.id } }">
+  <v-list-item
+    :base-color="statusColor"
+    :to="{ name: 'iirgd-demands-rg-id', params: { id: item.id } }"
+  >
     <template #prepend>
-      <v-icon color="red">mdi-badge-account-alert-outline</v-icon>
+      <Icon name="line-md:file" size="2em" />
     </template>
     <template #append>
-      <v-icon color="indigo">mdi-badge-account-alert-outline</v-icon>
+      <v-icon>mdi-badge-account-alert-outline</v-icon>
     </template>
 
     <template #title>
