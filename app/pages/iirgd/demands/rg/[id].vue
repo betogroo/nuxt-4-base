@@ -1,7 +1,11 @@
 <script setup lang="ts">
   const { params } = useRoute()
+  const { demand, getDemand } = useIirgdDemand()
+  getDemand(params.id)
 </script>
 
 <template>
-  <div>Demanda número tal {{ params.id }}</div>
+  <div>
+    {{ demand }}
+  </div>
 </template>
