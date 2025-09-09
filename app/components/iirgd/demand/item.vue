@@ -21,11 +21,9 @@
     :to="{ name: 'iirgd-demands-rg-id', params: { id: item.id } }"
   >
     <template #prepend>
-      <Icon name="line-md:file" size="2em" />
+      <app-icon name="prime:id-card" provider="nuxt" size="28" />
     </template>
-    <template #append>
-      <v-icon>mdi-badge-account-alert-outline</v-icon>
-    </template>
+    <template #append> <app-icon name="mdi-check" /></template>
 
     <template #title>
       <div class="d-flex">
