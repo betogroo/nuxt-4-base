@@ -3,10 +3,12 @@
     name: string
     size?: string
     color?: string
+    provider?: 'vuetify' | 'nuxt'
   }
-  defineProps<Props>()
+  const { provider = 'vuetify', size = '24px', color = undefined } = defineProps<Props>()
 </script>
 
 <template>
-  <v-icon :color="color" :icon="name" :size="size" />
+  <v-icon v-if="provider === 'vuetify'" :color="color" :icon="name" :size="size" />
+  <Icon v-else :name :size="size" />
 </template>
