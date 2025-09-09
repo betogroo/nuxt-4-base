@@ -24,7 +24,7 @@ export default defineNuxtConfig({
   },
   supabase: {
     redirectOptions: {
-      include: ['/iirgd'],
+      include: ['/iirgd/*'],
       callback: '/confirm',
       login: '/auth/login',
       saveRedirectToCookie: true,
