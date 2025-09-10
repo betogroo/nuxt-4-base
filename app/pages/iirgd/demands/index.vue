@@ -1,7 +1,7 @@
 <script setup lang="ts"></script>
 
 <template>
-  <v-container class="d-flex justify-space-around">
+  <app-container justify="around">
     <v-card
       color="red"
       height="120"
@@ -18,5 +18,5 @@
       variant="tonal"
       width="180"
     />
-  </v-container>
+  </app-container>
 </template>

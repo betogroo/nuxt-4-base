@@ -1,5 +1,11 @@
+<script setup lang="ts">
+  definePageMeta({
+    name: 'Home Page',
+  })
+  useUserStatus('/')
+</script>
 <template>
-  <div>
+  <app-container>
     <PageTitle title="Home Page" />
-  </div>
+  </app-container>
 </template>
