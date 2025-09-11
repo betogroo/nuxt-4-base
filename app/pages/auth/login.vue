@@ -18,13 +18,11 @@
 
 <template>
   <app-container background="bg-indigo" full-height justify="center">
-    <v-card
-      border
+    <app-card
       class="d-flex flex-column justify-center ma-3 pa-3 bg-white"
-      flat
       height="360"
-      rounded="md"
-      variant="outlined"
+      rounded="lg"
+      variant="tonal"
       width="360"
     >
       <div class="d-flex flex-column justify-end">
@@ -33,6 +31,6 @@
 
         <div>link</div>
       </div>
-    </v-card>
+    </app-card>
   </app-container>
 </template>
