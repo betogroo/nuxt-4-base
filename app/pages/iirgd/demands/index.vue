@@ -2,7 +2,7 @@
 
 <template>
   <app-container justify="around">
-    <v-card
+    <app-card
       color="red"
       height="120"
       title="Liberação RGs"
@@ -10,7 +10,7 @@
       variant="tonal"
       width="180"
     />
-    <v-card
+    <app-card
       color="red"
       height="120"
       title="Antecedentes"
