@@ -15,18 +15,18 @@
     <template #append>
       <v-sheet class="d-flex ga-5 ml-2 w-10">
         <v-avatar size="x-small">
-          <v-icon
+          <app-icon
             color="error"
             data-testid="cancel-icon"
-            icon="mdi-close-thick"
+            name="mdi-close-thick"
             @click.stop="$emit('cancel')"
           />
         </v-avatar>
         <v-avatar size="x-small">
-          <v-icon
+          <app-icon
             color="success"
             data-testid="delete-icon"
-            icon="mdi-check-bold"
+            name="mdi-check-bold"
             @click.stop="$emit('delete', item.id)"
           />
         </v-avatar>
