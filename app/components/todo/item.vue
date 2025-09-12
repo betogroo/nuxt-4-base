@@ -15,26 +15,24 @@
   <v-list-item color="orange" @click="$emit('toggle-item', item.id)">
     <template #prepend>
       <v-avatar data-testid="is-done-icon" size="x-small">
-        <v-btn
+        <app-btn
           v-if="!item.isDone"
           color="teal"
           icon="mdi-circle-outline"
           :loading="isPending('toggleIsDone', item.id)"
-          variant="text"
         />
-        <v-btn
+        <app-btn-icon
           v-else
           color="deep-purple"
           icon="mdi-check-circle-outline"
           :loading="isPending('toggleIsDone', item.id)"
-          variant="text"
         />
       </v-avatar>
     </template>
 
     <template #append>
       <v-avatar v-if="item.isDone" size="x-small">
-        <v-btn
+        <app-btn
           color="error"
           data-testid="trash-icon"
           icon="mdi-trash-can-outline"

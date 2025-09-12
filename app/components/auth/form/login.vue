@@ -52,8 +52,13 @@
       type="password"
       variant="outlined"
     />
-    <v-btn block color="primary" :disabled="!meta.valid" :loading="isPending('login')" type="submit"
-      >Login</v-btn
+    <app-btn
+      block
+      color="primary"
+      :disabled="!meta.valid"
+      :loading="isPending('login')"
+      type="submit"
+      >Login</app-btn
     >
   </v-form>
 </template>
