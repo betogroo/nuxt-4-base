@@ -62,9 +62,9 @@ Verifica se determinada ação/item está em estado pendente.
 Muito útil para **bindings de `:loading` em botões**.
 
 ```vue
-<v-btn :loading="isPending('deleteTodo', todo.id)">
+<app-btn :loading="isPending('deleteTodo', todo.id)">
   Deletar
-</v-btn>
+</app-btn>
 ```
 
 ---
@@ -74,7 +74,7 @@ Muito útil para **bindings de `:loading` em botões**.
 ### 1. Dentro de um componente (uso direto da função)
 
 ```vue
-<v-btn icon="mdi-check" :loading="isPending('toggleIsDone', item.id)" @click="toggle(item.id)" />
+<app-btn icon="mdi-check" :loading="isPending('toggleIsDone', item.id)" @click="toggle(item.id)" />
 ```
 
 ---
@@ -97,7 +97,7 @@ const { item, isPending = () => false } = defineProps<Props>()
 ```
 
 ```vue
-<v-btn
+<app-btn
   icon="mdi-trash"
   :loading="isPending('deleteTodo', item.id)"
   @click="$emit('delete-item', item.id)"

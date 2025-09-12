@@ -13,30 +13,30 @@
 </script>
 <template>
   <div class="d-flex ga-2">
-    <v-btn
+    <app-btn
       color="red"
       data-testid="decrement"
       :disabled="disabled.includes('decrement')"
       variant="outlined"
       @click="$emit('decrement')"
-      >-</v-btn
+      >-</app-btn
     >
-    <v-btn
+    <app-btn
       color="blue"
       data-testid="increment"
       :disabled="disabled.includes('increment')"
       variant="outlined"
       @click="$emit('increment')"
-      >+</v-btn
+      >+</app-btn
     >
   </div>
   <div>
-    <v-btn
+    <app-btn
       color="error"
       data-testid="reset"
       :disabled="disabled.includes('reset')"
       @click="$emit('reset-value')"
-      >Reiniciar</v-btn
+      >Reiniciar</app-btn
     >
   </div>
 </template>

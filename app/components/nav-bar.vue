@@ -20,9 +20,9 @@
     <NuxtLink data-testid="link-about" to="/about">About</NuxtLink>
 
     <template v-if="user">
-      <v-btn variant="text" @click="handleLogout">Logout</v-btn>
+      <app-btn variant="text" @click="handleLogout">Logout</app-btn>
       {{ user.email }}
     </template>
-    <v-btn v-else variant="text" @click="handleLogin">Login</v-btn>
+    <app-btn v-else variant="text" @click="handleLogin">Login</app-btn>
   </nav>
 </template>
