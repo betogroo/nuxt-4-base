@@ -31,10 +31,10 @@
     <h1>Zod</h1>
     <v-row>
       <v-col>
-        <v-btn @click="testParsedData(task)">Testar sem Erro</v-btn>
+        <app-btn @click="testParsedData(task)">Testar sem Erro</app-btn>
       </v-col>
       <v-col>
-        <v-btn @click="testParsedData(taskWithError)">Testar com Erro</v-btn>
+        <app-btn @click="testParsedData(taskWithError)">Testar com Erro</app-btn>
       </v-col>
     </v-row>
   </div>

@@ -45,12 +45,12 @@
         />
       </v-col>
       <v-col>
-        <v-btn
+        <app-btn
           data-testid="submit"
           :disabled="!meta.valid"
           :loading="isPending('addTodo')"
           type="submit"
-          >+</v-btn
+          >+</app-btn
         ></v-col
       >
     </v-row>

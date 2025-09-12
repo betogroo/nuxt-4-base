@@ -10,7 +10,7 @@
       <iirgd-demand-list>
         <iirgd-demand-item v-for="item in demands" :key="item.id" :item="item" />
       </iirgd-demand-list>
-      <v-btn @click="addDemand">Add Demand</v-btn>
+      <app-btn @click="addDemand">Add Demand</app-btn>
     </div>
   </app-container>
 </template>

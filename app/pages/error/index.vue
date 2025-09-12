@@ -23,7 +23,7 @@
     <v-form @submit.prevent="onSubmit">
       <v-text-field v-model="formData.email" />
       <v-text-field v-model="formData.password" />
-      <v-btn type="submit">Testar</v-btn>
+      <app-btn type="submit">Testar</app-btn>
     </v-form>
   </v-container>
 </template>
