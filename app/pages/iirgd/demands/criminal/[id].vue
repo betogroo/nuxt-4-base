@@ -10,5 +10,7 @@
 </script>
 
 <template>
-  <div>Demanda número tal {{ params.id }}</div>
+  <app-container>
+    <page-title :title="`Demanda número ${params.id}`" />
+  </app-container>
 </template>

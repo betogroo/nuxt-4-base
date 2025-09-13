@@ -18,12 +18,14 @@
 </script>
 
 <template>
-  <v-container>
-    <h1>Teste de Erros</h1>
-    <v-form @submit.prevent="onSubmit">
-      <v-text-field v-model="formData.email" />
-      <v-text-field v-model="formData.password" />
-      <app-btn type="submit">Testar</app-btn>
-    </v-form>
-  </v-container>
+  <app-container background="bg-primary">
+    <div>
+      <page-title title="Teste de Erros" />
+      <v-form @submit.prevent="onSubmit">
+        <v-text-field v-model="formData.email" />
+        <v-text-field v-model="formData.password" />
+        <app-btn type="submit">Testar</app-btn>
+      </v-form>
+    </div>
+  </app-container>
 </template>

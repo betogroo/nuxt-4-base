@@ -8,6 +8,7 @@
     title: 'Arrumar a Cama',
     isDone: false,
   })
+  // erro intencional
   const taskWithError = ref<Task>({
     id: 'id',
     title: '',
@@ -28,7 +29,7 @@
 
 <template>
   <div>
-    <h1>Zod</h1>
+    <page-title title="Zod" />
     <v-row>
       <v-col>
         <app-btn @click="testParsedData(task)">Testar sem Erro</app-btn>
